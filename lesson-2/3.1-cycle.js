@@ -96,10 +96,17 @@ for (let oddNumber of numberArray) {
 }
 
 // 6. Дан объект:
-//   let list = {
-//     name: 'denis',
-//     work: 'easycode',
-//     age: 29
-//   }
-
 // Перебрать объект и если значение в свойстве это строка то переписать ее всю в верхнем регистре.Использовать for in.
+
+  let list = {
+    name: 'denis',
+    work: 'easycode',
+    workempry: '',
+    age: 29
+  }
+
+  for (let stringToUpperCase in list) {
+    if (typeof list[stringToUpperCase] == 'string' && list[stringToUpperCase].length > 0)  {
+      console.log(list[stringToUpperCase].toUpperCase());
+    }
+  }
