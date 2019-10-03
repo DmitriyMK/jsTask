@@ -27,8 +27,8 @@ switch (a) {
 // Из задач по условному оператору if else выполнить задачи 1, 2 и 3 в виде тернарного оператора.
 let answer =
   (a === 'block') ? console.log('block') :
-    (a === 'none') ? console.log('none') :
-      (a === 'inline') ? console.log('inline') : console.log('other');
+  (a === 'none') ? console.log('none') :
+  (a === 'inline') ? console.log('inline') : console.log('other');
 
 
 
@@ -58,28 +58,19 @@ console.log(stringReverse);
 
 
 // 3. Факториал числа - произведение всех натуральных чисел от 1 до n включительно: 3! = 3 * 2 * 1, 5! = 5 * 4 * 3 * 2 * 1. С помощью циклов вычислить факториал числа 10. Использовать for.
-// let numberFactorial = 0;
-
-// for (let numFactorial = 10; numFactorial < 10; numFactorial--) {
-//   console.log(numFactorial);
-// }
 let numberForFactorial = 10;
+let factorial = 1;
 
-for (i = 0; i < numberForFactorial; i++) {
-  let factorial = (numberForFactorial - i);
-
-
-  console.log(factorial);
+for (let num = 1; num <= numberForFactorial; num++) {  
+  factorial = factorial * num;
 }
 
-
-
+console.log(factorial);
 
 
 
 
 // 4. На основе строки “JavaScript is a pretty good language” сделать новую строку, где каждое слово начинается с большой буквы, а пробелы удалены.Использовать for.
-
 let stringLowerCase2 = 'JavaScript is a pretty good language';
 let stringUpperCase2 = 0;
 let stringToArray2 = stringLowerCase2.split(' ');
@@ -96,7 +87,13 @@ console.log(stringUpperCase2);
 
 // 5. Найти все нечетные числа в массиве от 1 до 15 включительно и вывести их в консоль.
 // Массив[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] Использовать for of.
+let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
+for (let oddNumber of numberArray) {
+  if (oddNumber % 2 !== 0) { 
+    console.log(oddNumber) 
+  }
+}
 
 // 6. Дан объект:
 //   let list = {
