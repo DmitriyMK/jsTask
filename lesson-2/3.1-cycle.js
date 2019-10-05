@@ -1,5 +1,5 @@
 // Записать в виде switch case следующее условие:
-let a;
+let a = 'inline';
 
 // if (a === 'block') {
 //   console.log('block')
@@ -13,22 +13,56 @@ let a;
 // }
 
 switch (a) {
-  case (a === 'block'): console.log('block');
+  case 'block':
+    console.log('block');
     break;
-  case (a === 'none'): console.log('none');
+  case 'none':
+    console.log('none');
     break;
-  case (a === 'inline'): console.log('inline');
+  case 'inline':
+    console.log('inline');
     break;
-  default: console.log('other');
+  default:
+    console.log('other');
 }
 
 
 
 // Из задач по условному оператору if else выполнить задачи 1, 2 и 3 в виде тернарного оператора.
-let answer =
-  (a === 'block') ? console.log('block') :
-  (a === 'none') ? console.log('none') :
-  (a === 'inline') ? console.log('inline') : console.log('other');
+// 1. Если переменная равна “hidden”, присвоить ей значение “visible”, иначе - “hidden”.
+let variable = "hidden";
+
+(variable = "hidden") ? variable = "visible" : variable = "hidden";
+console.log(variable);
+
+
+
+// 2. Используя if, записать условие:
+//   если переменная равна нулю, присвоить ей 1;
+// если меньше нуля - строку “less then zero”;
+// если больше нуля - используя оператор “присвоение”, переменную умножить на 10(использовать краткую запись).
+// let num = 50;
+
+let num;
+(num === 0) ? num === 1 : (num < 0) ? console.log('less then zero') : num *= 10;
+
+
+
+// ----------------
+// 3. Дан объект let car = { name: 'Lexus', age: 10, create: 2008, needRepair: false }.
+// Написать условие если возраст машины больше 5 лет то нужно вывести в консоль сообщение 'Need Repair' и свойство needRepair в объекте car изменить на true; иначе изменить на false.
+
+let car = {
+  name: 'Lexus',
+  age: 1,
+  create: 2008,
+  needRepair: false
+}
+
+car.age > 5 ? ((car.needRepair = true) && (console.log("Need Repair"))) : car.needRepair = false;
+console.log(car);
+
+
 
 
 
@@ -61,7 +95,7 @@ console.log(stringReverse);
 let numberForFactorial = 10;
 let factorial = 1;
 
-for (let num = 1; num <= numberForFactorial; num++) {  
+for (let num = 1; num <= numberForFactorial; num++) {
   factorial = factorial * num;
 }
 
@@ -90,23 +124,23 @@ console.log(stringUpperCase2);
 let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 for (let oddNumber of numberArray) {
-  if (oddNumber % 2 !== 0) { 
-    console.log(oddNumber) 
+  if (oddNumber % 2 !== 0) {
+    console.log(oddNumber)
   }
 }
 
 // 6. Дан объект:
 // Перебрать объект и если значение в свойстве это строка то переписать ее всю в верхнем регистре.Использовать for in.
 
-  let list = {
-    name: 'denis',
-    work: 'easycode',
-    workempry: '',
-    age: 29
-  }
+let list = {
+  name: 'denis',
+  work: 'easycode',
+  workempry: '',
+  age: 29
+}
 
-  for (let stringToUpperCase in list) {
-    if (typeof list[stringToUpperCase] == 'string' && list[stringToUpperCase].length > 0)  {
-      console.log(list[stringToUpperCase].toUpperCase());
-    }
+for (let stringToUpperCase in list) {
+  if (typeof list[stringToUpperCase] == 'string' && list[stringToUpperCase].length > 0) {
+    console.log(list[stringToUpperCase].toUpperCase());
   }
+}
