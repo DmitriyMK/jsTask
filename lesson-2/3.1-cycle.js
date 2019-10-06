@@ -32,7 +32,7 @@ switch (a) {
 // 1. Если переменная равна “hidden”, присвоить ей значение “visible”, иначе - “hidden”.
 let variable = "hidden";
 
-(variable = "hidden") ? variable = "visible" : variable = "hidden";
+variable = variable = "hidden" ? "visible" : "hidden";
 console.log(variable);
 
 
