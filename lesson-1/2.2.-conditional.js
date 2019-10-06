@@ -17,7 +17,7 @@ console.log(`%c ${variable}`, 'color: green; font-weight: 700; font-size: 16px;'
 // если больше нуля - используя оператор “присвоение”, переменную умножить на 10(использовать краткую запись).
 let num = 50;
 
-if (num == 0) {
+if (num === 0) {
   num == 1
 } else if (num < 0) {
   num = "less then zero"

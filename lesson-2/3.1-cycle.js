@@ -69,7 +69,7 @@ console.log(car);
 // 1. На основе строки “i am in the easycode” сделать новую строку где первые буквы каждого слова будут в верхнем регистре.
 // Использовать for или while.
 let stringLowerCase = 'i am in the easycode';
-let stringUpperCase = 0;
+let stringUpperCase;
 let stringToArray = stringLowerCase.split(' ');
 
 
@@ -84,11 +84,14 @@ console.log(stringUpperCase);
 
 // 2. Дана строка “tseb eht ma i”.Используя циклы, сделать строку - перевертыш(то есть последняя буква становится первой, предпоследняя - второй итд).
 let stringWerewolf = "tseb eht ma i";
-let stringWerewolfToArray = stringWerewolf.split('');
-let stringReverse = stringWerewolfToArray.reverse().join('');
+// let stringWerewolfToArray = stringWerewolf.split('');
+// let stringReverse = stringWerewolfToArray.reverse().join('');
+let stringReverse = "";
 
+for (let i = stringWerewolf.length - 1; i >= 0; i--) {
+  stringReverse += stringWerewolf[i];
+}
 console.log(stringReverse);
-
 
 
 // 3. Факториал числа - произведение всех натуральных чисел от 1 до n включительно: 3! = 3 * 2 * 1, 5! = 5 * 4 * 3 * 2 * 1. С помощью циклов вычислить факториал числа 10. Использовать for.
@@ -96,7 +99,7 @@ let numberForFactorial = 10;
 let factorial = 1;
 
 for (let num = 1; num <= numberForFactorial; num++) {
-  factorial = factorial * num;
+  factorial *= num;
 }
 
 console.log(factorial);
@@ -106,7 +109,7 @@ console.log(factorial);
 
 // 4. На основе строки “JavaScript is a pretty good language” сделать новую строку, где каждое слово начинается с большой буквы, а пробелы удалены.Использовать for.
 let stringLowerCase2 = 'JavaScript is a pretty good language';
-let stringUpperCase2 = 0;
+let stringUpperCase2 = "";
 let stringToArray2 = stringLowerCase2.split(' ');
 
 
@@ -140,7 +143,9 @@ let list = {
 }
 
 for (let stringToUpperCase in list) {
-  if (typeof list[stringToUpperCase] == 'string' && list[stringToUpperCase].length > 0) {
-    console.log(list[stringToUpperCase].toUpperCase());
+  if (typeof list[stringToUpperCase] == 'string' && stringToUpperCase.length > 0) {
+    list[stringToUpperCase] = list[stringToUpperCase].toUpperCase();
   }
 }
+
+console.log(list)
