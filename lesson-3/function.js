@@ -126,20 +126,30 @@ console.log(changeCollection([1, 2, 3], ['a', 'b', 'c']))
 // 8. Создать функцию которая принимает массив пользователей, поле на которое хочу проверить и значение на которое хочу проверять. 
 // Проверять что все аргументы переданы. Возвращать новый массив с пользователями соответсвующие указанным параметрам.
 
-let users = [
-  { name: 'Denis', age: 29, gender: 'male' },
-  { name: 'Ivan', age: 20, gender: 'male' }
-]
 
-function(funcGetUsers) {
-  let result = [];
-
-  
+// функцию передаюшь обьект и 2 параметра (ключ значение) функция должна вывести только тех кто соответствует этим параметра
 
 
+// let users = [
+//   { name: 'Denis', age: 29, gender: 'male' },
+//   { name: 'Ivan', age: 20, gender: 'male' }
+// ]
 
-  return result;
-}
+// function funcGetUsers() {
+//   let result = [];
+
+//   for (search in users) {
+//     result.map(function (num) {
+//       return num;
+//     })
+//   }
+
+//   return result;
+// }
+
+// Check
+// console.log(funcGetUsers());
+
 
 // funcGetUsers(users, 'gender', 'male');
 
@@ -148,10 +158,47 @@ function(funcGetUsers) {
 
 
 // 9. Исходный массив [-2, 3, 4, -5, -6, 2, 4, -56]. Найдите количество отрицательных и положительных элементов
+let arrNew = [-2, 3, 4, -5, -6, 2, 4, -56];
 
+function isPositive(value) {
+  return value >= 0;
+}
+
+function isNegative(value) {
+  return value < 0;
+}
+
+let arrPositive = arrNew.filter(isPositive);
+let arrNegative = arrNew.filter(isNegative);
+
+let arrPositiveNumbers = arrPositive.length;
+let arrNegativeNumbers = arrNegative.length;
+
+// Checking
+console.log(arrPositiveNumbers);
+console.log(arrNegativeNumbers);
 
 
 // 10. На основе массива [1,2,3,5,8,9,10] сформировать новый массив,
 // каждый элемент которого будет хранить информацию о числе и его четности:
 
-// [{digit: 1, odd: true}, {digit: 2, odd: false}, {digit: 3, odd: true}...]
+let arrDuality = [1, 2, 3, 5, 8, 9, 10];
+let newArrDuality = [];
+
+
+for (arr in arrDuality) {
+
+  function isOdd() {
+    if (arrDuality[arr] % 2 !== 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  newArrDuality.push(`digit: ${arrDuality[arr]}, odd: ${isOdd()}`);
+}
+
+
+// checking
+console.log(newArrDuality);
