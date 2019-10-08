@@ -17,7 +17,7 @@ let somethingNumberRandomB = Math.floor(Math.random() * 10);
 console.log(`3. Работа с Math.random: - %c${somethingNumberRandomA} ${somethingNumberRandomB}`, ' color: green; font-weight: 700; font-size: 16px;');
 
 // 4. Проверить результат вычисления 0.6 + 0.7 - как привести к нормальному виду(1.3)
-let sum = (0.6 + 0.7);
+let sum = parseFloat((0.6 + 0.7).toFixed(1));
 console.log(`4. Проверить результат вычисления 0.6 + 0.7: - %c${sum.toFixed(1)}`, ' color: green; font-weight: 700; font-size: 16px;');
 
 
