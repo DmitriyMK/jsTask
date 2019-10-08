@@ -1,4 +1,5 @@
 // Записать в виде switch case следующее условие:
+
 let a = 'inline';
 
 // if (a === 'block') {
@@ -63,9 +64,6 @@ car.age > 5 ? ((car.needRepair = true) && (console.log("Need Repair"))) : car.ne
 console.log(car);
 
 
-
-
-
 // 1. На основе строки “i am in the easycode” сделать новую строку где первые буквы каждого слова будут в верхнем регистре.
 // Использовать for или while.
 let stringLowerCase = 'i am in the easycode';
@@ -84,8 +82,6 @@ console.log(stringUpperCase);
 
 // 2. Дана строка “tseb eht ma i”.Используя циклы, сделать строку - перевертыш(то есть последняя буква становится первой, предпоследняя - второй итд).
 let stringWerewolf = "tseb eht ma i";
-// let stringWerewolfToArray = stringWerewolf.split('');
-// let stringReverse = stringWerewolfToArray.reverse().join('');
 let stringReverse = "";
 
 for (let i = stringWerewolf.length - 1; i >= 0; i--) {
@@ -94,12 +90,20 @@ for (let i = stringWerewolf.length - 1; i >= 0; i--) {
 console.log(stringReverse);
 
 
+let stringWerewolfToArray = stringWerewolf.split('');
+let stringReverse = stringWerewolfToArray.reverse().join('');
+
+console.log(stringReverse);
+
+
 // 3. Факториал числа - произведение всех натуральных чисел от 1 до n включительно: 3! = 3 * 2 * 1, 5! = 5 * 4 * 3 * 2 * 1. С помощью циклов вычислить факториал числа 10. Использовать for.
 let numberForFactorial = 10;
 let factorial = 1;
 
+
 for (let num = 1; num <= numberForFactorial; num++) {
   factorial *= num;
+
 }
 
 console.log(factorial);
@@ -109,7 +113,9 @@ console.log(factorial);
 
 // 4. На основе строки “JavaScript is a pretty good language” сделать новую строку, где каждое слово начинается с большой буквы, а пробелы удалены.Использовать for.
 let stringLowerCase2 = 'JavaScript is a pretty good language';
+
 let stringUpperCase2 = "";
+
 let stringToArray2 = stringLowerCase2.split(' ');
 
 
@@ -129,6 +135,7 @@ let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 for (let oddNumber of numberArray) {
   if (oddNumber % 2 !== 0) {
     console.log(oddNumber)
+
   }
 }
 
@@ -149,3 +156,4 @@ for (let stringToUpperCase in list) {
 }
 
 console.log(list)
+
