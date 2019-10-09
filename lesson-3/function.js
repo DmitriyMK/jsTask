@@ -127,33 +127,26 @@ console.log(changeCollection([1, 2, 3], ['a', 'b', 'c']))
 
 // 8. Создать функцию которая принимает массив пользователей, поле на которое хочу проверить и значение на которое хочу проверять. 
 // Проверять что все аргументы переданы. Возвращать новый массив с пользователями соответсвующие указанным параметрам.
-
-
 // функцию передаюшь обьект и 2 параметра (ключ значение) функция должна вывести только тех кто соответствует этим параметра
 
 
-// let users = [
-//   { name: 'Denis', age: 29, gender: 'male' },
-//   { name: 'Ivan', age: 20, gender: 'male' }
-// ]
 
-// function funcGetUsers() {
-//   let result = [];
+let users = [
+  { name: 'Denis', age: 29, gender: 'male' },
+  { name: 'Ivan', age: 20, gender: 'male' }
+]
 
-//   for (search in users) {
-//     result.map(function (num) {
-//       return num;
-//     })
-//   }
 
-//   return result;
-// }
+function funcGetUsers(users, gender, male) {
+  let result = users.filter((user) => {
+    return user.gender === 'male';
+  })
+
+  return result;
+}
 
 // Check
-// console.log(funcGetUsers());
-
-
-// funcGetUsers(users, 'gender', 'male');
+console.log(funcGetUsers(users, 'gender', 'male'));
 
 
 
@@ -175,13 +168,12 @@ function numNumbers() {
   let arrPositiveNumbers = arrNew.filter(isPositive).length;
   let arrNegativeNumbers = arrNew.filter(isNegative).length;
 
-
   return `Число положительных элементов - ${arrPositiveNumbers}, Число отрицательных элементов - ${arrNegativeNumbers}`;
 }
 
-
 // Checking
 console.log(numNumbers());
+
 
 
 
@@ -194,16 +186,11 @@ let arr;
 
 
 for (arr in arrDuality) {
-
-  function isOdd() {
-    if (arrDuality[arr] % 2 !== 0) {
-      return false;
-    } else {
-      return true;
-    }
+  if (arrDuality[arr] % 2 !== 0) {
+    newArrDuality.push(`digit: ${arrDuality[arr]}, odd: false`);
+  } else {
+    newArrDuality.push(`digit: ${arrDuality[arr]}, odd: true`);
   }
-
-  newArrDuality.push(`digit: ${arrDuality[arr]}, odd: ${isOdd()}`);
 }
 
 
