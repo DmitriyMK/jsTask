@@ -1,21 +1,22 @@
+'use strict'
 // 1. Создать функцию multiply, которая будет принимать любое количество чисел и возвращать их произведение: multiply(1,2,3) = 6 (1*2*3)
 // Если нет ни одного аргумента, вернуть ноль: multiply() // 0
 
-function multiply(num) {
+function multiply() {
   let total = 1;
 
-  if (num !== 0) {
-    for (let i = 0; i < num.length; i++) {
-      total *= num[i];
+  if (arguments !== 0) {
+    for (let i = 0; i < arguments.length; i++) {
+      total *= arguments[i];
     }
     return total;
   } else {
-    return num = 0
+    return arguments;
   }
 }
 
 // checking
-console.log(multiply([5, 2, 36]));
+console.log(multiply(5, 2, 36));
 
 
 
@@ -24,7 +25,7 @@ console.log(multiply([5, 2, 36]));
 
 function reverse(textToReverse) {
   if (typeof textToReverse === "string") {
-    return String(textToReverse).split('').reverse().join('');
+    return textToReverse.split('').reverse().join('');
   } else {
     return "You should type a text";
   }
@@ -41,8 +42,8 @@ console.log(reverse("test"))
 
 function replaceToUnicode(strUni) {
   let str = [];
-  for (i = 0; i < strUni.length; i++) {
-    str.push(strUni.charCodeAt([i]));
+  for (let i = 0; i < strUni.length; i++) {
+    str.push(strUni.charCodeAt(i));
   }
 
   return str.join(' ');
@@ -110,6 +111,7 @@ console.log(doubleArray([1, 2, 3]))
 
 function changeCollection() {
   let result = [];
+  let removeFirstLetter;
 
   for (removeFirstLetter in arguments) {
     result.push(arguments[removeFirstLetter].slice(1));
@@ -160,23 +162,27 @@ console.log(changeCollection([1, 2, 3], ['a', 'b', 'c']))
 // 9. Исходный массив [-2, 3, 4, -5, -6, 2, 4, -56]. Найдите количество отрицательных и положительных элементов
 let arrNew = [-2, 3, 4, -5, -6, 2, 4, -56];
 
-function isPositive(value) {
-  return value >= 0;
+function numNumbers() {
+
+  function isPositive(value) {
+    return value >= 0;
+  }
+
+  function isNegative(value) {
+    return value < 0;
+  }
+
+  let arrPositiveNumbers = arrNew.filter(isPositive).length;
+  let arrNegativeNumbers = arrNew.filter(isNegative).length;
+
+
+  return `Число положительных элементов - ${arrPositiveNumbers}, Число отрицательных элементов - ${arrNegativeNumbers}`;
 }
 
-function isNegative(value) {
-  return value < 0;
-}
-
-let arrPositive = arrNew.filter(isPositive);
-let arrNegative = arrNew.filter(isNegative);
-
-let arrPositiveNumbers = arrPositive.length;
-let arrNegativeNumbers = arrNegative.length;
 
 // Checking
-console.log(arrPositiveNumbers);
-console.log(arrNegativeNumbers);
+console.log(numNumbers());
+
 
 
 // 10. На основе массива [1,2,3,5,8,9,10] сформировать новый массив,
@@ -184,6 +190,7 @@ console.log(arrNegativeNumbers);
 
 let arrDuality = [1, 2, 3, 5, 8, 9, 10];
 let newArrDuality = [];
+let arr;
 
 
 for (arr in arrDuality) {
