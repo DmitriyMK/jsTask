@@ -40,13 +40,8 @@ console.log(reverse("test"))
 // getCodeStringFromText(‘hello’) // “104 101 108 108 111” 
 
 
-function replaceToUnicode(strUni) {
-  let str = [];
-  for (let i = 0; i < strUni.length; i++) {
-    str.push(strUni.charCodeAt(i));
-  }
-
-  return str.join(' ');
+function replaceToUnicode(str) {
+  return str.split("").map(char => char.charCodeAt(0)).join(" ");
 }
 
 // checking
@@ -137,16 +132,13 @@ let users = [
 ]
 
 
-function funcGetUsers(users, gender, male) {
-  let result = users.filter((user) => {
-    return user.gender === 'male';
-  })
-
-  return result;
+function funcGetUsers(user, key, value) {
+  return user.filter(el => el[key] === value);
 }
 
+
 // Check
-console.log(funcGetUsers(users, 'gender', 'male'));
+console.log(funcGetUsers(users, 'age', 20));
 
 
 
