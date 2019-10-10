@@ -14,8 +14,9 @@ let arr2 = [[10, 20, 30]]
 let arr3 = [[{ age: 45, name: 'Jhon' }, { age: 20, name: 'Aaron' }]]
 let arr4 = [['abc', '123']]
 
-function firstFunc() {
 
+function firstFunc(arr, callback) {
+  return 'New value: ' + callback(arr);
 }
 
 
