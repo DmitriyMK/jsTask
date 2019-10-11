@@ -40,7 +40,7 @@ function getUserData() {
 
 
 function getReverseStr() {
-  return arr4.map(element)
+  return arr4.map(element => {return element.split('').reverse().join('')})
 }
 
 
