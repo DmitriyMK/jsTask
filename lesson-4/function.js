@@ -9,6 +9,7 @@
 // “New value: Jhon is 45, Aaron is 20,”
 // firstFunc([‘abc’, ‘123’], handler4) → “New value: cba, 321,” // строки инвертируются
 
+
 let arr1 = ['my', 'name', 'is', 'Trinity'];
 let arr2 = [10, 20, 30];
 let arr3 = [{ age: 45, name: 'Jhon' }, { age: 20, name: 'Aaron' }];
@@ -27,21 +28,27 @@ function getStringTogether(arr) {
   return arr.join("");
 }
 
-// Checking
-console.log(getNewValue(arr1, getStringTogether));
 
-
-
-function getMyltiplyByTen(el) {
-
+function getMyltiplyByTen() {
+  return arr2.map(num => num * 10);
 }
 
+
+function getUserData() {
+  return arr3.map(element => {return `${element.name} is ${element.age}`}).join(', ');
+}
+
+
+function getReverseStr() {
+  return arr4.map(element)
+}
+
+
 // Checking
+console.log(getNewValue(arr1, getStringTogether));
 console.log(getNewValue(arr2, getMyltiplyByTen));
-
-
-
-
+console.log(getNewValue(arr3, getUserData));
+console.log(getNewValue(arr4, getReverseStr));
 
 
 
@@ -85,4 +92,3 @@ console.log(getNewValue(arr2, getMyltiplyByTen));
 
 // Подсказка: вначале отсортируйте массив по index, затем используйте reduce() для построения
 // строки
-
