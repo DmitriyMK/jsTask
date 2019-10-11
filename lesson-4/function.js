@@ -9,15 +9,36 @@
 // “New value: Jhon is 45, Aaron is 20,”
 // firstFunc([‘abc’, ‘123’], handler4) → “New value: cba, 321,” // строки инвертируются
 
-let arr1 = [['my', 'name', 'is', 'Trinity']]
-let arr2 = [[10, 20, 30]]
-let arr3 = [[{ age: 45, name: 'Jhon' }, { age: 20, name: 'Aaron' }]]
-let arr4 = [['abc', '123']]
+let arr1 = ['my', 'name', 'is', 'Trinity'];
+let arr2 = [10, 20, 30];
+let arr3 = [{ age: 45, name: 'Jhon' }, { age: 20, name: 'Aaron' }];
+let arr4 = ['abc', '123'];
 
 
-function firstFunc(arr, callback) {
+function getNewValue(arr, callback) {
   return 'New value: ' + callback(arr);
 }
+
+
+function getStringTogether(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1);
+  }
+  return arr.join("");
+}
+
+// Checking
+console.log(getNewValue(arr1, getStringTogether));
+
+
+
+function getMyltiplyByTen(el) {
+
+}
+
+// Checking
+console.log(getNewValue(arr2, getMyltiplyByTen));
+
 
 
 
