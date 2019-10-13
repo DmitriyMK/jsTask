@@ -20,7 +20,6 @@ function getNewValue(arr, callback) {
   return 'New value: ' + callback(arr);
 }
 
-
 function getStringTogether(arr) {
   for (let i = 0; i < arr.length; i++) {
     arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1);
@@ -28,16 +27,13 @@ function getStringTogether(arr) {
   return arr.join("");
 }
 
-
 function getMyltiplyByTen() {
   return arr2.map(num => num * 10);
 }
 
-
 function getUserData() {
   return arr3.map(element => { return `${element.name} is ${element.age}` }).join(', ');
 }
-
 
 function getReverseStr() {
   return arr4.map(element => { return element.split('').reverse().join('') })
@@ -58,13 +54,34 @@ console.log(getNewValue(arr4, getReverseStr));
 // функция должна возвращать true или false в зависимости от результата вызова callback (проверить число больше 5). Callback  должен принимать один элемент массива, его индекс в массиве и весь массив. 
 
 
+let arrNum = [12, 5, 20];
+
+function copyEveryMethod(arr, checkingArr) {
+
+  if (Array.isArray(arr) && typeof checkingArr === 'function') {
+
+    for (i in arr) {
+      if (checkingArr(arr[i])) {
+        return true
+      } else {
+        return false;
+      }
+    }
+  };
+
+  return true;
+}
+
+function checkingArr(elements) {
+  return elements > 5;
+}
 
 
+//checking
+console.log(copyEveryMethod(arrNum, checkingArr));
 
 
-
-
-//1. На основе массива [1,2,3,5,8,9,10] сформировать новый массив,
+//3. На основе массива [1,2,3,5,8,9,10] сформировать новый массив,
 // каждый элемент которого будет хранить информацию о числе и его четности:
 // {digit: 1, odd: true }, { digit: 2, odd: false }, { digit: 3, odd: true }
 
@@ -91,9 +108,9 @@ console.log(isOddFunction(arrDigit));
 
 
 
-// 2. Проверить, содержит ли массив [12, 4, 50, 1, 0, 18, 40] элементы, равные нулю. Если да - вернуть false.
+// 4. Проверить, содержит ли массив [12, 4, 50, 1, 0, 18, 40] элементы, равные нулю. Если да - вернуть false.
 let arrZero = [12, 4, 50, 1, 0, 18, 40];
-let isZeroHere = arrZero.some(x => x === 0);
+let isZeroHere = arrZero.every(x => x === 0);
 
 
 //checking 
@@ -101,9 +118,11 @@ console.log(isZeroHere);
 
 
 
-//3.  Проверить, содержит ли массив ['yes', 'hello', 'no', 'easycode', 'what'] хотя бы одно слово длиной больше 3х букв. Если да - вернуть true
+//5.  Проверить, содержит ли массив ['yes', 'hello', 'no', 'easycode', 'what'] хотя бы одно слово длиной больше 3х букв. Если да - вернуть true
 let searchLetters = ['yes', 'hello', 'no', 'easycode', 'what'];
-let isSomeLettersHere = searchLetters.filter(x => x.length > 3);
+let isSomeLettersHere;
+
+isSomeLettersHere = searchLetters.some(x => x.length > 3);
 
 
 // checking
@@ -121,32 +140,77 @@ console.log(isSomeLettersHere);
 // строку, основываясь на index каждой буквы. Например:
 // [{char:"H",index:0}, {char:"i",index: 1}, {char:"!",index:2}] → “Hi!”
 
-// Подсказка: вначале отсортируйте массив по index, затем используйте reduce() для построения
-// строки
+// Подсказка: вначале отсортируйте массив по index, затем используйте reduce() для построения строки
 
 
-// Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы (размер массива определяется его длиной): [  [14, 45],  [1],  ['a', 'c', 'd']  ] → [ [1], [14, 45], ['a', 'c', 'd'] ]
-// Есть массив объектов:
-// [
-//     {cpu: 'intel', info: {cores:2, сache: 3}},
-//     {cpu: 'intel', info: {cores:4, сache: 4}},
-//     {cpu: 'amd', info: {cores:1, сache: 1}},
-//     {cpu: 'intel', info: {cores:3, сache: 2}},
-//     {cpu: 'amd', info: {cores:4, сache: 2}}
-// ]
+let arrStart = [{ char: "H", index: 0 }, { char: "i", index: 1 }, { char: "!", index: 2 }];
 
+
+let arrSort = arrStart.sort((a, b) => a + b);
+let arrTransform = arrSort.reduce(function (accumulator, currentValue) {
+  return accumulator + currentValue.char;
+}, '');
+
+// Checking
+console.log(arrTransform);
+
+
+
+
+// 6. Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы (размер массива определяется его длиной): [  [14, 45],  [1],  ['a', 'c', 'd']  ] → [ [1], [14, 45], ['a', 'c', 'd'] ]
+
+let arrForSort = [[14, 45], [1], ['a', 'c', 'd']];
+let arrResultSort = arrForSort.sort((a, b) => a.length - b.length);
+
+// Checking
+console.log(arrResultSort);
+
+
+
+// 7. Есть массив объектов:
 // Отсортировать их по возрастающему количеству ядер (cores).
 
+let arrPC = [
+  { cpu: 'intel', info: { cores: 2, сache: 3 } },
+  { cpu: 'intel', info: { cores: 4, сache: 4 } },
+  { cpu: 'firsttt', info: { cores: 000, сache: 1 } },
+  { cpu: 'intel', info: { cores: 3, сache: 2 } },
+  { cpu: 'amd', info: { cores: 4, сache: 2 } }
+]
 
-// 3. Создать функцию, которая будет принимать массив продуктов и две цены. Функция должна вернуть все продукты, цена которых находится в указанном диапазоне, и сортировать от дешевых к дорогим:
 
-// let products = [
-//     {title: 'prod1', price: 5.2}, {title: 'prod2', price: 0.18},
-//     {title: 'prod3', price: 15}, {title: 'prod4', price: 25},
-//     {title: 'prod5', price: 18.9}, {title: 'prod6', price: 8},
-//     {title: 'prod7', price: 19}, {title: 'prod8', price: 63}
-// ];
+let arrPCSortByCores = arrPC.sort((a, b) => (a.info.cores - b.info.cores));
 
+
+// Checking
+console.log(arrPCSortByCores);
+
+
+
+
+
+// 8. Создать функцию, которая будет принимать массив продуктов и две цены. Функция должна вернуть все продукты, цена которых находится в указанном диапазоне, и сортировать от дешевых к дорогим:
 // filterCollection(products, 15, 30) → [{...price: 15}, {...price: 18.9}, {...price: 19}, {...price: 25}]
 
 
+let products = [
+  { title: 'prod1', price: 5.2 }, { title: 'prod2', price: 0.18 },
+  { title: 'prod3', price: 15 }, { title: 'prod4', price: 25 },
+  { title: 'prod5', price: 18.9 }, { title: 'prod6', price: 8 },
+  { title: 'prod7', price: 19 }, { title: 'prod8', price: 63 }
+];
+
+function productsSortByPrice(product, priceMin, priceMax) {
+
+  product = product.sort((a, b) => (a.price - b.price));
+
+
+  let productFilter = product.filter((element) => {
+    return element.price > priceMin && element.price < priceMax;
+  })
+
+  return productFilter;
+}
+
+// Checking
+console.log(productsSortByPrice(products, 5, 15));
