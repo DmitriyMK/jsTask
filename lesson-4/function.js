@@ -81,6 +81,11 @@ function checkingArr(elements) {
 console.log(copyEveryMethod(arrNum, checkingArr));
 
 
+// !!!!!!! Тут какая-то ошибка. Не могу найти :(
+// !!!!!!! Как поставить  return elements > 19 то выдает фолс, хотя в массиве 20 есть
+
+
+
 //3. На основе массива [1,2,3,5,8,9,10] сформировать новый массив,
 // каждый элемент которого будет хранить информацию о числе и его четности:
 // {digit: 1, odd: true }, { digit: 2, odd: false }, { digit: 3, odd: true }
@@ -110,23 +115,27 @@ console.log(isOddFunction(arrDigit));
 
 // 4. Проверить, содержит ли массив [12, 4, 50, 1, 0, 18, 40] элементы, равные нулю. Если да - вернуть false.
 let arrZero = [12, 4, 50, 1, 0, 18, 40];
-let isZeroHere = arrZero.every(x => x === 0);
+
+function isZeroHere(arr) {
+  return arr.some(x => x === 0);
+}
 
 
 //checking 
-console.log(isZeroHere);
+console.log(isZeroHere(arrZero));
 
 
 
 //5.  Проверить, содержит ли массив ['yes', 'hello', 'no', 'easycode', 'what'] хотя бы одно слово длиной больше 3х букв. Если да - вернуть true
 let searchLetters = ['yes', 'hello', 'no', 'easycode', 'what'];
-let isSomeLettersHere;
 
-isSomeLettersHere = searchLetters.some(x => x.length > 3);
+function isSomeLettersHere(arr) {
+  return arr.some(x => x.length > 3);
+}
 
 
 // checking
-console.log(isSomeLettersHere);
+console.log(isSomeLettersHere(searchLetters));
 
 
 
@@ -145,14 +154,17 @@ console.log(isSomeLettersHere);
 
 let arrStart = [{ char: "H", index: 0 }, { char: "i", index: 1 }, { char: "!", index: 2 }];
 
+function arrTransform(arr) {
+  let arrSort = arr.sort((a, b) => a + b);
 
-let arrSort = arrStart.sort((a, b) => a + b);
-let arrTransform = arrSort.reduce(function (accumulator, currentValue) {
-  return accumulator + currentValue.char;
-}, '');
+  return arrSort.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue.char;
+  }, '');
+}
+
 
 // Checking
-console.log(arrTransform);
+console.log(arrTransform(arrStart));
 
 
 
@@ -160,10 +172,14 @@ console.log(arrTransform);
 // 6. Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы (размер массива определяется его длиной): [  [14, 45],  [1],  ['a', 'c', 'd']  ] → [ [1], [14, 45], ['a', 'c', 'd'] ]
 
 let arrForSort = [[14, 45], [1], ['a', 'c', 'd']];
-let arrResultSort = arrForSort.sort((a, b) => a.length - b.length);
+
+function arrResultSort(arr) {
+  return arr.sort((a, b) => a.length - b.length);
+}
+
 
 // Checking
-console.log(arrResultSort);
+console.log(arrResultSort(arrForSort));
 
 
 
@@ -178,12 +194,13 @@ let arrPC = [
   { cpu: 'amd', info: { cores: 4, сache: 2 } }
 ]
 
-
-let arrPCSortByCores = arrPC.sort((a, b) => (a.info.cores - b.info.cores));
+function arrPCSortByCores(arr) {
+  return arrPC.sort((a, b) => (a.info.cores - b.info.cores));
+}
 
 
 // Checking
-console.log(arrPCSortByCores);
+console.log(arrPCSortByCores(arrPC));
 
 
 
