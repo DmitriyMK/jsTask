@@ -1,6 +1,5 @@
 'use strict'
 
-
 // 1. Создать объект, который описывает ширину и высоту
 // прямоугольника, а также может посчитать площадь фигуры:
 // const rectangle = {width:..., height:..., getSquare:...};
@@ -15,6 +14,7 @@ const rectangle = {
 }
 
 // checking
+console.log(`%cTask1`, 'color: tomato; font-weight: 700; font-size: 16px;')
 console.log(rectangle.getSquare());
 
 
@@ -43,6 +43,7 @@ const price = {
 };
 
 // checking
+console.log(`%cTask2`, 'color: tomato; font-weight: 700; font-size: 16px;')
 console.log("price: " + price.getPrice());
 console.log("discount: " + price.getPriceWithDiscount());
 
@@ -53,7 +54,6 @@ console.log("discount: " + price.getPriceWithDiscount());
 // object.height = 10;
 // object.inc(); // придумать свое название для метода
 // object.height; // 11;
-
 
 
 let rubik = {
@@ -69,20 +69,40 @@ rubik.growByStepOne();
 
 
 // checking
+console.log(`%cTask3`, 'color: tomato; font-weight: 700; font-size: 16px;')
 console.log(rubik.height);
 
 
 // 4. Создать объект “вычислитель”, у которого есть числовое свойство
 // “значение” и методы “удвоить”, “прибавить один”, “отнять один”.
 // Методы можно вызывать через точку, образуя цепочку методов:
-// const numerator = {
-//   value: 1,
-//   double: function () {...},
-//   plusOne: function () { ...},
-//   minusOne: function () { ...},
-// }
-// numerator.double().plusOne().plusOne().minusOne();
-// numerator.value // 3
+
+
+const numerator = {
+  value: 1,
+
+  double: function (value) {
+    this.value *= 2;
+    return this;
+  },
+
+  plusOne: function (value) {
+    this.value += 1;
+    return this;
+  },
+
+  minusOne: function (value) {
+    this.value -= 1;
+    return this;
+  },
+}
+
+
+
+// checking
+console.log(`%cTask4`, 'color: tomato; font-weight: 700; font-size: 16px;')
+console.log(numerator.double().minusOne().minusOne().plusOne());
+
 
 
 
@@ -98,9 +118,37 @@ console.log(rubik.height);
 // console.log( "Mul=" + calculator.mul() );
 
 
+function Calculator() {
+
+  this.read = function () {
+    this.a = prompt("Значение первое");
+    this.b = prompt("Значение второе");
+  };
+
+  this.sum = function () {
+    return Number(this.a) + Number(this.b);
+  };
+
+  this.mul = function () {
+    return this.a * this.b;
+  };
+}
+
+let calculator = new Calculator();
+calculator.read();
+
+
+// checking
+console.log(`%cTask5`, 'color: tomato; font-weight: 700; font-size: 16px;')
+
+console.log("Sum = " + calculator.sum());
+console.log("Mul = " + calculator.mul());
 
 
 
+
+
+// !!!!!!!!! Пока не нужно делать ??????????????
 // 6. Создать объект с розничной ценой и количеством продуктов. Этот
 // объект должен содержать метод для получения общей стоимости
 // всех товаров (цена * количество продуктов)
