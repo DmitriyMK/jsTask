@@ -8,7 +8,7 @@
 
 ## Lesson 2 - Object/Cycle <br>
 * 2.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-2/2.1-objects.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-2/2.1-objects.js">JS</a> <br>
-* 2.2 - <a href="https://dmitriymk.github.io/jsTask/lesson-2/3.1-cycle.html">HTML</a>, <a https://github.com/DmitriyMK/jsTask/blob/master/lesson-2/3.1-cycle.js">JS</a> <br>
+* 2.2 - <a href="https://dmitriymk.github.io/jsTask/lesson-2/3.1-cycle.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-2/3.1-cycle.js">JS</a> <br>
 
 ## Lesson 3 - Functions <br>
 * 3.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-3/function.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-3/function.js">JS</a> <br>
