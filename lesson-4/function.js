@@ -111,7 +111,7 @@ console.log(isOddFunction(arrDigit));
 let arrZero = [12, 4, 50, 1, 0, 18, 40];
 
 function isZeroHere(arr) {
-  return arr.some(x => x === 0);
+  return arr.every(x => x !== 0);
 }
 
 
