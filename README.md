@@ -14,5 +14,7 @@
 * 3.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-3/function.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-3/function.js">JS</a> <br>
 
 ## Lesson 4 - Function - Higher-Order Functions <br>
+* 4.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-4/function.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-4/function.js">JS</a> <br>
 
 ## Lesson 5 - Constructor<br>
+* 5.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-5/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-5/constructor.js">JS</a> <br>
