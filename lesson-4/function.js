@@ -57,18 +57,15 @@ console.log(getNewValue(arr4, getReverseStr));
 let arrNum = [12, 5, 20];
 
 function copyEveryMethod(arr, checkingArr) {
+  if (Array.isArray(arr) && typeof checkingArr === "function") {
+    console.log("something went wrong");
+  }
 
-  if (Array.isArray(arr) && typeof checkingArr === 'function') {
-
-    for (i in arr) {
-      if (checkingArr(arr[i])) {
-        return true
-      } else {
-        return false;
-      }
+  for (i in arr) {
+    if (checkingArr(arr[i])) {
+      return false;
     }
-  };
-
+  }
   return true;
 }
 
@@ -80,9 +77,6 @@ function checkingArr(elements) {
 //checking
 console.log(copyEveryMethod(arrNum, checkingArr));
 
-
-// !!!!!!! Тут какая-то ошибка. Не могу найти :(
-// !!!!!!! Как поставить  return elements > 19 то выдает фолс, хотя в массиве 20 есть
 
 
 
