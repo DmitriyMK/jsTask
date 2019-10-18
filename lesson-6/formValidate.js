@@ -32,7 +32,6 @@ const checkEmptyField = function () {
 
 
 // Пароль (больше 8-ми символов, должна быть цифра, буква, большая буква)
-
 const checkPassword = function () {
   let regexPassword = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/g;
 
@@ -40,7 +39,6 @@ const checkPassword = function () {
     return true;
   }
 }
-
 
 
 // Галочка - "Прочитал условия" (должна быть включена)
