@@ -8,46 +8,55 @@
 // Галочка - "Прочитал условия" (должна быть включена)
 // Если хоть одно из условий не совпадает, то форма не валидна.
 
-
 const name = document.querySelector(".name");
 const login = document.querySelector(".login");
 const pass = document.querySelector(".pass");
-const read = document.querySelector(".readIt");
-
-
+const read = document.getElementById("readIt");
 const form = document.querySelector('.form');
-const submit = document.querySelector('.submit');
-
-const fields = form.querySelectorAll('input')
 
 
+// Имя (больше 2-х символов и меньше - 40)
+const checkNumSymbolsName = function () {
+  if (name.value.length > 2 && name.value.length < 40) {
+    return true;
+  }
+};
 
+
+// Логин (должен быть заполнен/не пустой)
+const checkEmptyField = function () {
+  if (login.value.length > 1) {
+    return true;
+  }
+}
+
+
+// Пароль (больше 8-ми символов, должна быть цифра, буква, большая буква)
+
+const checkPassword = function () {
+  let regexPassword = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/g;
+
+  if ((regexPassword.test(pass.value)) && pass.value.length > 8) {
+    return true;
+  }
+}
+
+
+
+// Галочка - "Прочитал условия" (должна быть включена)
+const checkChecked = function (element) {
+  if (element.checked) {
+    return true;
+  }
+}
+
+
+// Если хоть одно из условий не совпадает, то форма не валидна.
 form.addEventListener('submit', function (event) {
-  event.preventDefault()
+  event.preventDefault();
 
-  for (let i = 0; i < fields.length; i++) {
-    if (!fields[i].value) {
-      console.log('field is blank');
-    }
-  }
-
-  if (name.value.length > 2 || name.value.length < 40) {
-    console.log('name is absent');
-  }
+  checkNumSymbolsName(name) &&
+    checkEmptyField(login) &&
+    checkPassword(pass) &&
+    checkChecked(read) ? console.log("Все хорошо") : console.log("Все плохо");
 })
-
-
-
-
-
-// submit.addEventListener('click', function (event) {
-//   // event.preventDefault();
-//   let result;
-
-//   if (name.value.length > 2 || name.value.length < 40) {
-//     return result++;
-//   } else {
-//     return false;
-//   };
-
-// });
