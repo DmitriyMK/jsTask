@@ -33,10 +33,13 @@ const tabs = document.querySelectorAll('.tab');
 const btn = document.querySelectorAll('button');
 
 
-btn.addEventListener('click', function () {
-  tabsArray.forEach((node) => {
-    node.classList.remove('show');
-  })
-  tab.classList.add('show');
-})
+for (let i = 0; i < btn.length; i++) {
 
+  btn[i].addEventListener('click', function () {
+    tabs.forEach((node) => {
+      node.classList.remove('show');
+    })
+
+    tabs[i].classList.add('show');
+  })
+}

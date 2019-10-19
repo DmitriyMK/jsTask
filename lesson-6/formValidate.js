@@ -33,9 +33,9 @@ const checkEmptyField = function () {
 
 // Пароль (больше 8-ми символов, должна быть цифра, буква, большая буква)
 const checkPassword = function () {
-  let regexPassword = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/g;
+  let regexPassword = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])({9,})/g;
 
-  if ((regexPassword.test(pass.value)) && pass.value.length > 8) {
+  if ((regexPassword.test(pass.value)) {
     return true;
   }
 }
