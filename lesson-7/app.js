@@ -50,7 +50,6 @@ for (let i = 0; i < getText.childNodes.length; i++) {
   newText.nodeValue = '-text-';
 }
 
-
 // checking
 console.log(getText);
 
@@ -58,15 +57,19 @@ console.log(getText);
 
 
 // 5. Найти в коде список ul и добавить класс “list”
+let findList = document.querySelector('ul');
+findList.classList.add('list');
 
 
 
 // 6. Найти в коде ссылку, находящуюся после списка ul, и добавить id=link
-
+let findfLink = document.querySelector('ul ~ a');
+findfLink.setAttribute('id', 'link');
 
 
 
 //7. На li через один (начиная с самого первого) установить класс “item”
+
 
 
 
