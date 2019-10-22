@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <style>
+      .tab {
+        width: 300px;
+        height: 200px;
+        display: none;
+      }
+      .hotels {
+        background: chocolate;
+      }
+      .cars {
+        background: crimson;
+      }
+      .flights {
+        background: darkslategray;
+      }
+      .show {
+        display: block;
+      }
+    </style>
+    <div class="tabs">
+      <div>
+        <button id="hotels">hotels</button>
+        <button id="cars">cars</button>
+        <button id="flights">flights</button>
+      </div>
+      <div class="tab hotels show">
+        info about hotels
+    </div>
+      <div class="tab cars">
+        info about cars
+    </div>
+      <div class="tab flights">
+        info about flights
+    </div>
+    </div>
+
+    <script src="./tabs.js"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <!-- И ещё практика:
+У вас на странице есть три инпута, 
+чекбокс(галочка) 
+и кнопка "отправить" 
+(итого: пять элементов).
+
+Ваша задача - написать валидацию. 
+То есть, пользователь заполняет все поля, нажимает на кнопку "Отправить", а вы проверяете все ли поля заполнены корректно.
+Результат вывести в консоль (все хорошо/всё плохо).
+ -->
+
+
+  <form class="form">
+    <input class="name" type="text" value="">
+    <input class="login" type="text" value="">
+    <input class="pass" type="password" value="">
+
+    <div>
+      <input type="checkbox" id="readIt" name="readIt">
+      <label for="readIt">Прочитал условия</label>
+    </div>
+
+    <input id="submit" type="submit" value="send">
+  </form>
+
+
+  <script src="./formValidate.js"></script>
+
+</body>
+
+</html>
