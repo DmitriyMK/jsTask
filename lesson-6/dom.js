@@ -28,6 +28,6 @@ console.log(firstDivAll);
 //   Для навигации по DOM использовать методы,
 //   которые возвращают только элементы
 
-for (let i = 1; i < firstDivAll.children.length - 1; i++) {
+for (let i = 1; i < firstDivAll.childElementCount - 1; i++) {
   console.log(firstDivAll.children[i]);
 }
