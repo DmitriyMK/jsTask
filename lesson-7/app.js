@@ -69,12 +69,18 @@ findfLink.setAttribute('id', 'link');
 
 
 //7. На li через один (начиная с самого первого) установить класс “item”
-
+let oddLink = document.querySelectorAll('li:nth-of-type(odd)');
+for (let item of oddLink) {
+  item.classList.add('item');
+}
 
 
 
 // 8. На все ссылки в примере установить класс “custom-link”
-
+let link = document.getElementsByTagName('a');
+for (let item of link) {
+  item.classList.add('custom-link');
+}
 
 
 
