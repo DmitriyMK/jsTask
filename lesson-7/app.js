@@ -42,15 +42,18 @@ for (let i = 0; i < getTextFromUl.length; i++) {
 // -text-<a href="#">reprehendunt</a>-text-<mark>nemore</mark>-text-
 
 let getText = document.querySelector('p');
-let newText = '-text-';
-
+let newText;
 
 
 for (let i = 0; i < getText.childNodes.length; i++) {
-
+  newText = getText.childNodes[i];
+  newText.nodeValue = '-text-';
 }
 
-console.log(replacedText);
+
+// checking
+console.log(getText);
+
 
 
 
