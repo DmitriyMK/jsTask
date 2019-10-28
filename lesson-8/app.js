@@ -83,9 +83,9 @@ const strDoSmth = (function () {
   }
 
   return {
-    setString: setString,
-    getLengthStr: getLengthStr,
-    werewolfStr: werewolfStr,
+    setString,
+    getLengthStr,
+    werewolfStr,
   };
 
 }());
@@ -128,15 +128,15 @@ const calculator = (function () {
   }
 
   function getResult() {
-    return Math.round(result);
+    return Number(result.toFixed(2));
   }
 
   return {
-    setValue: setValue,
-    plusValue: plusValue,
-    multiplyValue: multiplyValue,
-    getPow: getPow,
-    getResult: getResult,
+    setValue,
+    plusValue,
+    multiplyValue,
+    getPow,
+    getResult,
   }
 
 }());
