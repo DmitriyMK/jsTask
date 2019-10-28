@@ -2,14 +2,6 @@
 // Вручную номер li не ставить оно должно подставляться в зависимости от кол-ва лишек в списке.
 
 
-// !!!! Начал делать так, но не смог прописать порядковый номер в шаблонной строке ((
-// const list = document.querySelector('ul');
-// const item = `<li class='new-item'> item </li>
-//               <li class='new-item'> item </li>
-//               <li class='new-item'> item </li>`;
-// list.insertAdjacentHTML('afterbegin', item);
-
-
 let list = document.querySelector('ul');
 let item = [];
 let i;
@@ -55,26 +47,20 @@ findMark.classList.add('green');
 
 
 // 5. Отсортировать li внутри списка в обратном порядке (по тексту внутри)
-
-let listItems = Array.from(document.querySelectorAll('ul li'));
-let listText = [];
+let listItems = document.querySelectorAll('li');
 
 
-for (let items of listItems) {
-  listText.push(items.textContent);
+let sorted = [...listItems].sort(function (a, b) {
 
+  if (a.children.innerHTML >= b.children.innerHTML) {
+    return 1;
+  } else {
+    return -1;
+  }
+})
 
-  listText.sort(function (a, b) {
-    if (a > b) { return -1; }
-    if (a < b) { return 1; }
-    return 0;
-  });
+list.innerHTML = '';
+
+for (let li of sorted) {
+  list.appendChild(li);
 }
-
-
-console.log(listText);
-
-
-// !!! Тут зашел в тупик. 
-// !!! Сортировка по содержимому произошла, но только содержимое.
-// Подскажите пожалуйста алгоритм, как можно произвести сортировку
