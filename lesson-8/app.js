@@ -57,10 +57,44 @@ console.log(multiply(10))
 // b. получить строку
 // c. получить длину строки
 // d. получить строку-перевертыш
+
 // Пример:
 // модуль.установитьСтроку(‘abcde’);
 // модуль.получитьСтроку(); // ‘abcde’
 // модуль.получитьДлину(); // 5
+
+
+const strDoSmth = (function () {
+
+  function setString(value) {
+    if (typeof value === Number) {
+      return value.toString;
+    } else {
+      return value;
+    }
+  }
+
+  function getLengthStr(value) {
+    return value.length;
+  }
+
+  function werewolfStr(value) {
+    return value.split('').reverse().join('');
+  }
+
+  return {
+    setString: setString,
+    getLengthStr: getLengthStr,
+    werewolfStr: werewolfStr,
+  };
+
+}());
+
+// checking 
+console.log(strDoSmth.setString('123'));
+console.log(strDoSmth.getLengthStr('abcde'))
+console.log(strDoSmth.werewolfStr('abcde'))
+
 
 
 
@@ -71,4 +105,46 @@ console.log(multiply(10))
 // значение *= 2модуль.узнатьЗначение(); 
 // вывести в консоль 30 (здесь надо округлить)
 
-// Также можно вызывать методы цепочкой:модуль.установитьЗначение(10).вСтепень(2).узнатьЗначение(); // 100
+// Также можно вызывать методы цепочкой: модуль.установитьЗначение(10).вСтепень(2).узнатьЗначение(); // 100
+
+
+const calculator = (function () {
+  let result = 0;
+
+  function setValue(value) {
+    return result = value;
+  }
+
+  function plusValue(value) {
+    return result += value;
+  }
+
+  function multiplyValue(value) {
+    return result *= value;
+  }
+
+  function getPow(value) {
+    return Math.pow(result, value);
+  }
+
+  function getResult() {
+    return Math.round(result);
+  }
+
+  return {
+    setValue: setValue,
+    plusValue: plusValue,
+    multiplyValue: multiplyValue,
+    getPow: getPow,
+    getResult: getResult,
+  }
+
+}());
+
+
+// checking
+console.log(calculator.setValue(10));
+console.log(calculator.plusValue(5));
+console.log(calculator.multiplyValue(2));
+console.log(calculator.getPow(2));
+console.log(calculator.getResult());
