@@ -30,6 +30,25 @@ console.log(minus()());
 // multiply(10); // 120 (12 * 10)
 
 
+function multiplyMaker(a = 0) {
+  let result = a;
+
+  return function (value) {
+    return result *= value;
+  }
+}
+
+const multiply = multiplyMaker(2);
+
+
+// checking
+console.log(multiply(2));
+console.log(multiply(1));
+console.log(multiply(3));
+console.log(multiply(10))
+
+
+
 
 // 3. Реализовать модуль, который работает со строкой и имеет методы:
 // a. установить строку
