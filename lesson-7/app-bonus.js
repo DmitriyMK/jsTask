@@ -38,13 +38,43 @@ for (i = 0; i < listArr.length; i++) {
 
 // 3. В начало документа (в начало body) добавить картинку img с атрибутами src и alt (текст придумайте сами). В src добавьте реальный url к картинке. Для создания элемента используйте метод createElement. 
 
+let body = document.querySelector('body');
+let addPicture = document.createElement('img');
+addPicture.setAttribute('src', './hqdefault.jpg');
+body.insertAdjacentElement('afterbegin', addPicture);
+
 
 
 
 // 4. Найти на странице элемент mark, добавить в конец содержимого текст “green” и на элемент установить класс green
-
-
+let findMark = document.querySelector('mark');
+let addText = ' green ';
+findMark.append(addText);
+findMark.classList.add('green');
 
 
 
 // 5. Отсортировать li внутри списка в обратном порядке (по тексту внутри)
+
+let listItems = Array.from(document.querySelectorAll('ul li'));
+let listText = [];
+
+
+for (let items of listItems) {
+  listText.push(items.textContent);
+
+
+  listText.sort(function (a, b) {
+    if (a > b) { return -1; }
+    if (a < b) { return 1; }
+    return 0;
+  });
+}
+
+
+console.log(listText);
+
+
+// !!! Тут зашел в тупик. 
+// !!! Сортировка по содержимому произошла, но только содержимое.
+// Подскажите пожалуйста алгоритм, как можно произвести сортировку
