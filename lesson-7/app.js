@@ -204,7 +204,7 @@ total = total.reduce(function (a, b) {
 // Create tfoot
 let tfoot = `<tfoot>
               <tr>
-                <td>Total balance: ${total}</td>
+                <td colspan="4">Total balance: <b>${total}</b></td>
               </tr>
              </tfoot>
             `;
