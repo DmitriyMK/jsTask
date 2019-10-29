@@ -30,4 +30,4 @@
 * 7.2 - <a href="https://dmitriymk.github.io/jsTask/lesson-7/app-bonus.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-7/app-bonus.js">JS</a> <br>
 
 ## Lesson 8 - Closure<br>
-* 7.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-8/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-8/app.js">JS</a> <br>
+* 8.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-8/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-8/app.js">JS</a> <br>
