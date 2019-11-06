@@ -84,11 +84,13 @@ class House extends Building {
 
   getCount() {
     return {
-      floors: this.countOfFloors,
-      flats: this.countOfFloors * this.countOfFlats
+      floors: super.getCountOfFloors(),
+      flats: super.getCountOfFloors() * this.countOfFlats
     }
   }
 }
+
+
 
 
 class ShoppingMall extends Building {
@@ -99,8 +101,8 @@ class ShoppingMall extends Building {
 
   getCount() {
     return {
-      floors: this.countOfFloors,
-      shops: this.countOfFloors * this.countOfShops
+      floors: super.getCountOfFloors(),
+      shops: super.getCountOfFloors() * this.countOfShops
     }
   }
 }
@@ -143,7 +145,7 @@ function FurnitureForOffice(name, price, tables) {
 }
 
 FurnitureForOffice.prototype = Object.create(Furniture.prototype);
-// FurnitureForOffice.prototype.constructor = FurnitureForOffice;
+FurnitureForOffice.prototype.constructor = FurnitureForOffice;
 
 
 FurnitureForOffice.prototype.getInfo = function () {
@@ -162,7 +164,7 @@ function FurnitureForHome(name, price, chairs) {
 }
 
 FurnitureForHome.prototype = Object.create(Furniture.prototype);
-// FurnitureForOffice.prototype.constructor = FurnitureForOffice;
+FurnitureForOffice.prototype.constructor = FurnitureForOffice;
 
 
 FurnitureForHome.prototype.getInfo = function () {
@@ -217,9 +219,14 @@ class User {
 }
 
 class Admin extends User {
-  constructor(name, date, supeAdmin) {
-    super(name, date);
-    this.supeAdmin = supeAdmin;
+  superAdmin = true;
+
+  set SuperAdmin(value) {
+    this.superAdmin = value;
+  }
+
+  get SuperAdmin() {
+    return this.superAdmin;
   }
 }
 
@@ -232,7 +239,7 @@ class Guest extends User {
 
 
 const user = new User('Mike', '2020 10 01');
-const admin = new Admin('John', '2000 01 25', true);
+const admin = new Admin('John', '2000 01 25', false);
 const guest = new Guest('Chupacabra', '2021 01 25', '2021 01 30');
 
 
@@ -240,3 +247,4 @@ const guest = new Guest('Chupacabra', '2021 01 25', '2021 01 30');
 console.log(user);
 console.log(admin);
 console.log(guest);
+
