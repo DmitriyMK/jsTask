@@ -1,16 +1,7 @@
-'use strict'
-
-
-// 1.
-// Получить пользователей (users) от сервера https://jsonplaceholder.typicode.com. 
-// Получив ответ от сервера вывести имена пользователей на страницу. 
-// При клике на имя пользователя в произвольном месте должна появиться подробная информация о нем. 
-// Для визуальной части можно использовать bootstrap или другие фреймворки. 
-
-// 2.
-// Создать форму добавления пользователя состоящая из полей name, email, username, phone, website 
-// при сабмите формы сделать POST запрос на сервер после ответа от сервера добавлять полученного пользователя на страницу.
-
+// Практика
+// Сделать запрос к альбомам, получить их список, вывести на экран (в левой колонке на странице)
+// При клике на альбом делать запрос к фотографиям (которые в относятся к текущему альбому), получать их список, вывести на экран (в правой колонке)
+// Апи для запросов - https://jsonplaceholder.typicode.com/ 
 
 
 class CustomHttp {
@@ -20,58 +11,51 @@ class CustomHttp {
     xhr.send();
     xhr.addEventListener('load', () => callback(xhr.responseText))
   }
+
+  post(url, data, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    xhr.send(data);
+    xhr.addEventListener('load', () => callback(xhr.responseText))
+  }
 }
 
 
 const http = new CustomHttp();
 
-http.get('https://jsonplaceholder.typicode.com/users', (data) => {
-  const parsedUsers = JSON.parse(data);
-  const userForRendering = new Users();
 
-  parsedUsers.forEach((user) => {
-    userForRendering.render(user);
+
+http.get('https://jsonplaceholder.typicode.com/albums', (photo) => {
+
+  const parsedPhoto = JSON.parse(photo);
+  const imgForRendering = new PhotoAlbum();
+
+  parsedPhoto.forEach((photo) => {
+    imgForRendering.render(photo);
   })
 });
 
 
-class Users {
+class PhotoAlbum {
   constructor() {
-    this.wrapper = document.querySelector('#users');
+    this.gallery = document.querySelector('.gallery');
+    this.photo = document.querySelector('.photo');
   }
 
   handleClick(event) {
-    http.get('https://jsonplaceholder.typicode.com/users', (user) => {
-      console.log(this.user)
+
+    http.get('https://jsonplaceholder.typicode.com/photos?albumId=', (res) => {
+      const gallery = new PhotoAlbum();
+      const parsedPhoto = JSON.parse(res);
+      parsedPhoto.forEach((photo) => {
+        gallery.render(photo);
+      });
     });
   }
 
-  render(user) {
+  render(gallery) {
     const div = document.createElement('div')
-    div.textContent = user.name;
-
-    div.addEventListener('click', this.handleClick);
-    this.wrapper.append(div);
+    div.addEventListener('click', this.handleClick)
+    this.gallery.append(div);
   }
 }
-
-
-// class ShoppingMall extends Building {
-//   constructor(name, countOfFloors, countOfShops) {
-//     super(name, countOfFloors)
-//     this.countOfShops = countOfShops;
-//   }
-
-//   getCount() {
-//     return {
-//       floors: this.countOfFloors,
-//       shops: this.countOfFloors * this.countOfShops
-//     }
-//   }
-// }
-
-
-// "name"
-// "username"
-// "email"
-// "phone": "010-692-6593 x09125",
