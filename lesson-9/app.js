@@ -219,16 +219,12 @@ class User {
 }
 
 class Admin extends User {
-  superAdmin = true;
-
-  set SuperAdmin(value) {
-    this.superAdmin = value;
-  }
-
-  get SuperAdmin() {
-    return this.superAdmin;
+  constructor(name, date, superAdmin) {
+    super(name, date);
+    this._superAdmin = superAdmin;
   }
 }
+
 
 class Guest extends User {
   constructor(name, date, validDate) {
