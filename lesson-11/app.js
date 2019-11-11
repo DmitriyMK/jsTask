@@ -50,7 +50,7 @@ class Album {
       const renderPhoto = new Album();
 
       parsedPhoto.forEach((photo) => {
-        renderAlbum.renderPhoto(photo);
+        renderPhoto.renderPhoto(photo);
       });
     });
   }
