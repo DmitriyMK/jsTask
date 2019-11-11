@@ -4,6 +4,7 @@
 // Апи для запросов - https://jsonplaceholder.typicode.com/ 
 
 
+
 class CustomHttp {
   get(url, callback) {
     const xhr = new XMLHttpRequest();
@@ -20,42 +21,63 @@ class CustomHttp {
   }
 }
 
-
 const http = new CustomHttp();
 
+http.get('https://jsonplaceholder.typicode.com/albums', (res) => {
+  const parsedAlbum = JSON.parse(res);
+  const renderAlbum = new Album();
 
-
-http.get('https://jsonplaceholder.typicode.com/albums', (photo) => {
-
-  const parsedPhoto = JSON.parse(photo);
-  const imgForRendering = new PhotoAlbum();
-
-  parsedPhoto.forEach((photo) => {
-    imgForRendering.render(photo);
-  })
+  parsedAlbum.forEach((album) => {
+    renderAlbum.renderAlbum(album);
+  });
 });
 
 
-class PhotoAlbum {
+class Album {
   constructor() {
-    this.gallery = document.querySelector('.gallery');
-    this.photo = document.querySelector('.photo');
+    this.list = document.querySelector('.list');
+    this.gallery = document.querySelector('.gallery')
   }
 
-  handleClick(event) {
 
-    http.get('https://jsonplaceholder.typicode.com/photos?albumId=', (res) => {
-      const gallery = new PhotoAlbum();
-      const parsedPhoto = JSON.parse(res);
-      parsedPhoto.forEach((photo) => {
-        gallery.render(photo);
+  handleClick(event) {
+    const albumId = event.target.dataset.id;
+
+    http.get('https://jsonplaceholder.typicode.com/photos?albumId=' + albumId, (res) => {
+      const parsedAlbum = JSON.parse(res);
+      const renderAlbum = new Album();
+
+      parsedAlbum.forEach((photo) => {
+        renderAlbum.renderPhoto(photo);
       });
+
     });
   }
 
-  render(gallery) {
-    const div = document.createElement('div')
-    div.addEventListener('click', this.handleClick)
-    this.gallery.append(div);
+
+  renderAlbum(album) {
+    const photolink = document.querySelectorAll('.album__link');
+    const photoItem = `
+                        <div class='photoItem'>
+                          <a href='#' class='photolink' data-id = ${album.id}>
+                            <span class='photoTitle'>${album.title}</span>
+                          </a>
+                        </div>
+                      `;
+
+    this.list.insertAdjacentHTML('beforeend', photoItem);
+    photolink.forEach(album => {
+      album.addEventListener('click', this.handleClick);
+    });
+  }
+
+
+  renderPhoto(photo) {
+    const galleryItem = `<div class='gallery__item'>
+                          <img src='${photo.url}'>
+                        </div>
+                        `;
+
+    this.gallery.insertAdjacentHTML("beforeend", galleryItem);
   }
 }
