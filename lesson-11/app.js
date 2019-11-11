@@ -40,31 +40,32 @@ class Album {
 
 
   handleClick(event) {
+
     const albumId = event.target.dataset.id;
 
     http.get('https://jsonplaceholder.typicode.com/photos?albumId=' + albumId, (res) => {
-      const parsedAlbum = JSON.parse(res);
-      const renderAlbum = new Album();
+      event.preventDefault;
 
-      parsedAlbum.forEach((photo) => {
+      const parsedPhoto = JSON.parse(res);
+      const renderPhoto = new Album();
+
+      parsedPhoto.forEach((photo) => {
         renderAlbum.renderPhoto(photo);
       });
-
     });
   }
 
 
   renderAlbum(album) {
     const photolink = document.querySelectorAll('.album__link');
-    const photoItem = `
-                        <div class='photoItem'>
-                          <a href='#' class='photolink' data-id = ${album.id}>
-                            <span class='photoTitle'>${album.title}</span>
-                          </a>
-                        </div>
-                      `;
+    const photoItem = `<div class='photoItem'>
+                        <a href='#' class='photolink' data-id=${album.id}>
+                          <span class='photoTitle'>${album.title}</span>
+                        </a>
+                      </div>`;
 
     this.list.insertAdjacentHTML('beforeend', photoItem);
+
     photolink.forEach(album => {
       album.addEventListener('click', this.handleClick);
     });
@@ -72,12 +73,11 @@ class Album {
 
 
   renderPhoto(photo) {
-    const gallery = document.querySelector('.gallery')
-
+    const gallery = document.querySelector('.gallery');
     const galleryItem = `<div class='gallery__item'>
-                          <img src='${photo.url}'>
-                        </div>
-                        `;
+                          <p>${photo.title}</p>
+                        </div>`;
+
 
     this.gallery.insertAdjacentHTML('beforeend', galleryItem);
   }
