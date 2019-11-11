@@ -57,7 +57,8 @@ class Album {
 
 
   renderAlbum(album) {
-    const photolink = document.querySelectorAll('.album__link');
+    const photolink = document.querySelectorAll('.photolink');
+    
     const photoItem = `<div class='photoItem'>
                         <a href='#' class='photolink' data-id=${album.id}>
                           <span class='photoTitle'>${album.title}</span>
