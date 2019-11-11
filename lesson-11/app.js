@@ -36,7 +36,6 @@ http.get('https://jsonplaceholder.typicode.com/albums', (res) => {
 class Album {
   constructor() {
     this.list = document.querySelector('.list');
-    this.gallery = document.querySelector('.gallery')
   }
 
 
@@ -73,11 +72,13 @@ class Album {
 
 
   renderPhoto(photo) {
+    const gallery = document.querySelector('.gallery')
+
     const galleryItem = `<div class='gallery__item'>
                           <img src='${photo.url}'>
                         </div>
                         `;
 
-    this.gallery.insertAdjacentHTML("beforeend", galleryItem);
+    this.gallery.insertAdjacentHTML('beforeend', galleryItem);
   }
 }
