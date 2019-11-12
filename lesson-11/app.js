@@ -40,17 +40,21 @@ class Album {
 
 
   handleClick(event) {
-
     const albumId = event.target.dataset.id;
 
     http.get('https://jsonplaceholder.typicode.com/photos?albumId=' + albumId, (res) => {
-      event.preventDefault;
 
+      const galleryItem = document.querySelectorAll('.gallery__item');
       const parsedPhoto = JSON.parse(res);
       const renderPhoto = new Album();
 
+
       parsedPhoto.forEach((photo) => {
         renderPhoto.renderPhoto(photo);
+      });
+
+      galleryItem.forEach((photo) => {
+        photo.remove(photo);
       });
     });
   }
@@ -58,10 +62,9 @@ class Album {
 
   renderAlbum(album) {
     const photolink = document.querySelectorAll('.photolink');
-    
     const photoItem = `<div class='photoItem'>
                         <a href='#' class='photolink' data-id=${album.id}>
-                          <span class='photoTitle'>${album.title}</span>
+                          ${album.title}
                         </a>
                       </div>`;
 
@@ -76,10 +79,10 @@ class Album {
   renderPhoto(photo) {
     const gallery = document.querySelector('.gallery');
     const galleryItem = `<div class='gallery__item'>
+                          <img src='${photo.thumbnailUrl}'/>
                           <p>${photo.title}</p>
                         </div>`;
 
-
-    this.gallery.insertAdjacentHTML('beforeend', galleryItem);
+    gallery.insertAdjacentHTML('beforeend', galleryItem);
   }
 }
