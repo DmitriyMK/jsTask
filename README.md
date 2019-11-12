@@ -31,3 +31,6 @@
 
 ## Lesson 8 - Closure<br>
 * 8.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-8/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-8/app.js">JS</a> <br>
+
+## Lesson 9 - Classes. OOP<br>
+* 9.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-9/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-9/app.js">JS</a> <br>
