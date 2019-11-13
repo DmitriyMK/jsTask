@@ -7,8 +7,6 @@
 // 1. Подключить поиск по введенному слову. +
 // Новости должны обновляться после каждой введенной буквы.
 // 2. Добавить сортировку. Пример, как должно быть в запросе: sortBy=popularity
-// Не обязательно:
-// 3. Добавить возможность выбора новостей по дате. Пример из запроса: from=2019-10-05
 
 
 //!!! делайте запрос с поиском и сортировкой. 
@@ -23,7 +21,7 @@ class Service {
     this.search = '';
   }
 
-  sendRequest({ country = '', category = '', search = '' }) {
+  sendRequest({ country = '', category = '', search = '', sort = '' }) {
     let urlForSearch = ''
 
     if (country !== '') {
@@ -39,6 +37,11 @@ class Service {
     if (search !== '') {
       this.search = search;
       urlForSearch = `https://newsapi.org/v2/everything?q=${this.search}&apiKey=${this.key}`
+    }
+
+    if (sort !== '') {
+      this.sort = sort;
+      urlForSearch = `https://newsapi.org/v2/everything?q=${this.search}}&sortBy=${this.sort}&apiKey=${this.key}`
     }
 
 
@@ -62,10 +65,12 @@ class UI {
     const country = document.querySelector('#country');
     const category = document.querySelector('#category');
     const search = document.querySelector('#search');
+    const sort = document.querySelector('#sort');
 
     country.addEventListener('change', this.handleSelect.bind(this));
     category.addEventListener('change', this.handleSelect.bind(this))
     search.addEventListener('change', this.handleSelect.bind(this));
+    sort.addEventListener('change', this.handleSelect.bind(this));
   }
 
   handleSelect(event) {
