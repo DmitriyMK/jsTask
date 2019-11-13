@@ -7,6 +7,8 @@
 // 1. Подключить поиск по введенному слову. +
 // Новости должны обновляться после каждой введенной буквы.
 // 2. Добавить сортировку. Пример, как должно быть в запросе: sortBy=popularity
+// Не обязательно:
+// 3. Добавить возможность выбора новостей по дате. Пример из запроса: from=2019-10-05
 
 
 //!!! делайте запрос с поиском и сортировкой. 
@@ -41,7 +43,7 @@ class Service {
 
     if (sort !== '') {
       this.sort = sort;
-      urlForSearch = `https://newsapi.org/v2/everything?q=${this.search}}&sortBy=${this.sort}&apiKey=${this.key}`
+      urlForSearch = `https://newsapi.org/v2/everything?q=${this.search}&apiKey=${this.key}`
     }
 
 
