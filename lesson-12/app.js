@@ -4,10 +4,7 @@
 // https://newsapi.org/
 
 
-
-
-
-// 1. Подключить поиск по введенному слову.
+// 1. Подключить поиск по введенному слову. +
 // Новости должны обновляться после каждой введенной буквы.
 // 2. Добавить сортировку. Пример, как должно быть в запросе: sortBy=popularity
 // Не обязательно:
@@ -23,20 +20,35 @@ class Service {
     this.key = 'dfb8b7f05b2d47f1be7ca76c489e61ec';
     this.country = '';
     this.category = '';
+    this.search = '';
   }
 
-  sendRequest({ country = '', category = '' }) {
+  sendRequest({ country = '', category = '', search = '' }) {
+    let urlForSearch = ''
+
     if (country !== '') {
       this.country = country;
-    }
-    if (category !== '') {
-      this.category = category;
+      urlForSearch = `https://newsapi.org/v2/top-headlines?country=${this.country}&category=${this.category}&apiKey=${this.key}`
     }
 
-    return fetch(`https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${this.key}`)
-      .then((response) => { return response.json() })
-      // .then((response) => { console.log(response) })
-      .catch((err) => { console.log(err) })
+    if (category !== '') {
+      this.category = category;
+      urlForSearch = `https://newsapi.org/v2/top-headlines?country=${this.country}&category=${this.category}&apiKey=${this.key}`
+    }
+
+    if (search !== '') {
+      this.search = search;
+      urlForSearch = `https://newsapi.org/v2/everything?q=${this.search}&apiKey=${this.key}`
+    }
+
+
+    return fetch(urlForSearch)
+      .then((response) => {
+        return response.json()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 }
 
@@ -49,16 +61,17 @@ class UI {
   init() {
     const country = document.querySelector('#country');
     const category = document.querySelector('#category');
+    const search = document.querySelector('#search');
 
     country.addEventListener('change', this.handleSelect.bind(this));
     category.addEventListener('change', this.handleSelect.bind(this))
+    search.addEventListener('change', this.handleSelect.bind(this));
   }
 
   handleSelect(event) {
     const { id: selectName, value: selectValue } = event.target;
     this.service.sendRequest({ [selectName]: selectValue })
       .then((response) => {
-        console.log('Yopooooo', response.articles);
         this.layout.renderAll(response.articles)
       })
   }
