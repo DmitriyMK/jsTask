@@ -26,12 +26,8 @@ class Service {
   sendRequest({ country = '', category = '', search = '', sort = '' }) {
     let urlForSearch = ''
 
-    if (country !== '') {
+    if (country !== '' || category !== '') {
       this.country = country;
-      urlForSearch = `https://newsapi.org/v2/top-headlines?country=${this.country}&category=${this.category}&apiKey=${this.key}`
-    }
-
-    if (category !== '') {
       this.category = category;
       urlForSearch = `https://newsapi.org/v2/top-headlines?country=${this.country}&category=${this.category}&apiKey=${this.key}`
     }
@@ -43,7 +39,7 @@ class Service {
 
     if (sort !== '') {
       this.sort = sort;
-      urlForSearch = `https://newsapi.org/v2/everything?q=${this.search}&apiKey=${this.key}`
+      urlForSearch = `https://newsapi.org/v2/everything?q=${this.search}&sortBy=${this.sort}&apiKey=${this.key}`
     }
 
 
