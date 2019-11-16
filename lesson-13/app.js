@@ -6,24 +6,46 @@
 
 // SpeechRecognition в помощь.
 
-const speech = new SpeechRecognition();
-let voicesSpeech = [];
 
 
+window.speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
+
+const recognition = new window.speechRecognition();
 const start = document.querySelector('.start');
 const stop = document.querySelector('.stop');
+const content = document.querySelector('.content');
+let finalTranscript = '';
 
+recognition.interimResults = true;
+recognition.maxAlternatives = 10;
+recognition.continuous = true;
 
 
 start.addEventListener('click', startListen);
-end.addEventListener('click', endListen);
+stop.addEventListener('click', endListen);
 
 
-function startListen() {
+recognition.onresult = (event) => {
+  let interimTranscript = '';
 
+  for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
+
+    let transcript = event.results[i][0].transcript;
+    if (event.results[i].isFinal) {
+      finalTranscript += transcript;
+    } else {
+      interimTranscript += transcript;
+    }
+  }
+
+  content.innerHTML = finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</>';
 }
 
 
+function startListen() {
+  recognition.start();
+}
+
 function endListen() {
-  
+  recognition.stop();
 }
