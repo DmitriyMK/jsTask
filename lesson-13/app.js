@@ -6,9 +6,9 @@
 // SpeechRecognition в помощь.
 
 
-window.speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
+const speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
 
-const recognition = new window.speechRecognition();
+const recognition = new speechRecognition();
 const start = document.querySelector('.start');
 const stop = document.querySelector('.stop');
 const content = document.querySelector('.content');
