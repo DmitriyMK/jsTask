@@ -92,6 +92,20 @@ h1 {
   text-transform: uppercase;
 }
 
+.level {
+  display: block;
+  width: 190px;
+  margin: 12px auto 24px;
+
+  font-family: "Amatic SC", cursive;
+  font-size: 5em;
+  background: #986a24;
+  color: white;
+  font-weight: 500;
+  border: black dashed 5px;
+  cursor: pointer;
+}
+
 .popup_bg:before {
   content: "";
   position: fixed;

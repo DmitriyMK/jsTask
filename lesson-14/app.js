@@ -36,8 +36,10 @@ const popup = document.querySelector('.popup');
 const close = document.querySelector('.popup_close');
 const body = document.querySelector('body');
 
+let choiceLevel = document.querySelector('.level');
 let appearMoleInfo = document.querySelector('.appearMole');
 let catchMoleInfo = document.querySelector('.catchMole');
+let levelOfGame = document.querySelector('.levelOfGame');
 
 let isPlaying = false;
 let numCountMoles = 0;
@@ -65,7 +67,26 @@ function randomHole(holes) {
 }
 
 function showMole() {
-    const time = randomTime(1000, 2000);
+    let time = choiceLevel.value;
+
+    switch (time) {
+        case (choiceLevel.value === 'easy'):
+            time = randomTime(1000, 2000);
+            break;
+
+        case (choiceLevel.value === 'normal'):
+            time = randomTime(2000, 4000);
+            break;
+
+        case (choiceLevel.value === 'hard'):
+            time = randomTime(3000, 6000);
+            break;
+
+        default:
+            time = randomTime(1000, 2000);
+    }
+
+
     const hole = randomHole(holes);
     hole.classList.add('up');
     numCountMoles++;
@@ -96,28 +117,43 @@ function finishGame() {
     const list = JSON.parse(localStorage.getItem('usersList')) || [];
     list.push({
         name: currentName.value,
-        count: numCatchMoles
+        appear: numCountMoles,
+        count: numCatchMoles,
+        level: levelOfGame,
     })
 
     localStorage.setItem('usersList', JSON.stringify(list))
     body.classList.add('popup_bg');
     popup.classList.add('popup_open');
 
-    // Добавить колчичетсов кротов что появилось
     appearMoleInfo.textContent = numCountMoles;
     catchMoleInfo.textContent = numCatchMoles;
+    levelOfGame.textContent = levelOfGame;
 
+    numCountMoles = 0;
     numCatchMoles = 0;
     score.textContent = 0;
     currentName.value = '';
 }
 
-close.addEventListener('click', function () {
 
-    // Добавить условие на закрытые если клике вне окна
+// close popup by clicking on close
+close.addEventListener('click', function () {
     popup.classList.remove('popup_open');
     body.classList.remove('popup_bg');
 })
+
+
+// close popup by clicking outside popup
+document.addEventListener('click', function (event) {
+    let isClickInsidePopup = popup.contains(event.target);
+    if (!isClickInsidePopup) {
+        popup.classList.remove('popup_open');
+        body.classList.remove('popup_bg');
+    }
+});
+
+
 
 
 
