@@ -138,7 +138,6 @@ function finishGame() {
     numCatchMoles = 0;
     score.textContent = 0;
     currentName.value = '';
-
 }
 
 
