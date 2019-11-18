@@ -44,6 +44,18 @@ h1 {
   cursor: pointer;
 }
 
+.result {
+  font-family: "Amatic SC", cursive;
+  font-size: 5em;
+  background: orangered;
+  color: white;
+  font-weight: 500;
+  border: black dashed 5px;
+  display: block;
+  margin: 12px auto -4px;
+  cursor: pointer;
+}
+
 .hole {
   flex: 1 0 33.33%;
   position: relative;
@@ -154,4 +166,51 @@ h1 {
 
 span {
   font-weight: 700;
+}
+
+.popupResult_bg:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #9a9a9a;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.8;
+  z-index: 999;
+}
+
+.popupResult {
+  position: absolute;
+  max-width: 500px;
+  min-height: 200px;
+  width: 100%;
+  padding: 25px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fafafa;
+  font-size: 28px;
+  font-weight: 400;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease-in, visibility 0.25s ease-in;
+  text-align: center;
+}
+
+.popupResult_open {
+  visibility: visible;
+  opacity: 1;
+  z-index: 9999;
+}
+
+.popupResult_close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 16px;
+  font-family: serif;
+  z-index: 9999;
+  cursor: pointer;
 }

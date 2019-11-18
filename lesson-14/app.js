@@ -33,13 +33,17 @@ const startBtn = document.querySelector('.start');
 const menu = document.querySelector('.menu');
 const currentName = document.querySelector('#name');
 const popup = document.querySelector('.popup');
+const popupResult = document.querySelector('.popupResult');
 const close = document.querySelector('.popup_close');
+const popupResultClose = document.querySelector('.popupResult_close');
 const body = document.querySelector('body');
+const table = document.querySelector('table');
 
 let choiceLevel = document.querySelector('.level');
 let appearMoleInfo = document.querySelector('.appearMole');
 let catchMoleInfo = document.querySelector('.catchMole');
 let levelOfGame = document.querySelector('.levelOfGame');
+let result = document.querySelector('.result');
 
 let isPlaying = false;
 let numCountMoles = 0;
@@ -67,19 +71,19 @@ function randomHole(holes) {
 }
 
 function showMole() {
-    let time = choiceLevel.value;
+    let time = '';
 
-    switch (time) {
-        case (choiceLevel.value === 'easy'):
+    switch (choiceLevel.value) {
+        case 'easy':
             time = randomTime(1000, 2000);
             break;
 
-        case (choiceLevel.value === 'normal'):
-            time = randomTime(2000, 4000);
+        case 'normal':
+            time = randomTime(750, 1500);
             break;
 
-        case (choiceLevel.value === 'hard'):
-            time = randomTime(3000, 6000);
+        case 'hard':
+            time = randomTime(300, 600);
             break;
 
         default:
@@ -119,7 +123,7 @@ function finishGame() {
         name: currentName.value,
         appear: numCountMoles,
         count: numCatchMoles,
-        level: levelOfGame,
+        level: choiceLevel.value
     })
 
     localStorage.setItem('usersList', JSON.stringify(list))
@@ -128,7 +132,7 @@ function finishGame() {
 
     appearMoleInfo.textContent = numCountMoles;
     catchMoleInfo.textContent = numCatchMoles;
-    levelOfGame.textContent = levelOfGame;
+    levelOfGame.textContent = choiceLevel.value;
 
     numCountMoles = 0;
     numCatchMoles = 0;
@@ -147,6 +151,7 @@ close.addEventListener('click', function () {
 // close popup by clicking outside popup
 document.addEventListener('click', function (event) {
     let isClickInsidePopup = popup.contains(event.target);
+
     if (!isClickInsidePopup) {
         popup.classList.remove('popup_open');
         body.classList.remove('popup_bg');
@@ -154,6 +159,32 @@ document.addEventListener('click', function (event) {
 });
 
 
+// open popup by clicking on result
+result.addEventListener('click', function () {
+    popupResult.classList.add('popupResult_open');
+    body.classList.add('popupResult_bg');
+});
+
+
+// close popup by clicking on close
+popupResultClose.addEventListener('click', function () {
+    popupResult.classList.remove('popupResult_open');
+    body.classList.remove('popupResult_bg');
+
+
+    let userResult = JSON.parse(localStorage.usersList);
+    let tr = '';
+
+
+    // for (let i = 0; i < 10; i++) {
+    //     console.log()
+    //     tr = `<tr>
+    //             <td>${userResult}</td>
+    //           </tr>`;
+
+    //     table.insertAdjacentHTML('beforeend', tr);
+    // }
+});
 
 
 
