@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<style>
+  body {
+    margin-top: 60px;
+    background: orangered;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    min-height: 400px;
+    margin: auto;
+    background: #fafafa;
+  }
+
+  .btn__wrap {
+    margin-bottom: 30px;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  button {
+    width: 150px;
+    padding: 12px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  button:first-child {
+    background: #28b928;
+    color: #fff;
+  }
+
+  button:last-child {
+    background: tomato;
+    color: #fff;
+  }
+
+  p {
+    font-size: 2em;
+    font-weight: 500;
+  }
+</style>
+
+<body>
+
+  <div class="wrapper">
+
+    <p class="content"></p>
+
+    <div class="btn__wrap">
+      <button class="start">Start</button>
+      <button class="stop">Stop</button>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+
+</body>
+
+</html>
