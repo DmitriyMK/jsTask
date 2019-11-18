@@ -37,13 +37,14 @@ const popupResult = document.querySelector('.popupResult');
 const close = document.querySelector('.popup_close');
 const popupResultClose = document.querySelector('.popupResult_close');
 const body = document.querySelector('body');
-const table = document.querySelector('table');
+const table = document.querySelector('tbody');
 
 let choiceLevel = document.querySelector('.level');
 let appearMoleInfo = document.querySelector('.appearMole');
 let catchMoleInfo = document.querySelector('.catchMole');
 let levelOfGame = document.querySelector('.levelOfGame');
 let result = document.querySelector('.result');
+let list = JSON.parse(localStorage.getItem('usersList')) || [];
 
 let isPlaying = false;
 let numCountMoles = 0;
@@ -118,7 +119,7 @@ function startGame() {
 
 function finishGame() {
     menu.style.display = 'block';
-    const list = JSON.parse(localStorage.getItem('usersList')) || [];
+
     list.push({
         name: currentName.value,
         appear: numCountMoles,
@@ -129,7 +130,6 @@ function finishGame() {
     localStorage.setItem('usersList', JSON.stringify(list))
     body.classList.add('popup_bg');
     popup.classList.add('popup_open');
-
     appearMoleInfo.textContent = numCountMoles;
     catchMoleInfo.textContent = numCatchMoles;
     levelOfGame.textContent = choiceLevel.value;
@@ -138,7 +138,27 @@ function finishGame() {
     numCatchMoles = 0;
     score.textContent = 0;
     currentName.value = '';
+
 }
+
+
+function getResult() {
+    let tr;
+
+    for (let i = 0; i < 10; i++) {
+        tr = `<tr>
+                <td>${list[i].level}</td>
+                <td>${list[i].appear}</td>
+                <td>${list[i].count}</td>
+              </tr>`;
+
+        table.insertAdjacentHTML('beforeend', tr);
+    }
+
+    // Выводить информацию по клику. 
+    // Избежать повторного перебора при повторном клике
+}
+
 
 
 // close popup by clicking on close
@@ -170,43 +190,4 @@ result.addEventListener('click', function () {
 popupResultClose.addEventListener('click', function () {
     popupResult.classList.remove('popupResult_open');
     body.classList.remove('popupResult_bg');
-
-
-    let userResult = JSON.parse(localStorage.usersList);
-    let tr = '';
-
-
-    // for (let i = 0; i < 10; i++) {
-    //     console.log()
-    //     tr = `<tr>
-    //             <td>${userResult}</td>
-    //           </tr>`;
-
-    //     table.insertAdjacentHTML('beforeend', tr);
-    // }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
