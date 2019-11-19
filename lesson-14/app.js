@@ -38,13 +38,13 @@ const close = document.querySelector('.popup_close');
 const popupResultClose = document.querySelector('.popupResult_close');
 const body = document.querySelector('body');
 const table = document.querySelector('tbody');
+let label = document.querySelector('label');
 
 let choiceLevel = document.querySelector('.level');
 let appearMoleInfo = document.querySelector('.appearMole');
 let catchMoleInfo = document.querySelector('.catchMole');
 let levelOfGame = document.querySelector('.levelOfGame');
 let result = document.querySelector('.result');
-let list = JSON.parse(localStorage.getItem('usersList')) || [];
 
 let isPlaying = false;
 let numCountMoles = 0;
@@ -110,17 +110,25 @@ function showMole() {
 }
 
 function startGame() {
-    menu.style.display = 'none';
+    if (currentName.value !== '') {
+        menu.style.display = 'none';
 
-    showMole();
-    isPlaying = true;
-    setTimeout(() => {
-        isPlaying = false;
-    }, 3000)
+        showMole();
+        isPlaying = true;
+        setTimeout(() => {
+            isPlaying = false;
+        }, 3000)
+    }
+
+    else {
+        label.classList.add('error');
+    }
+
 }
 
 function finishGame() {
     menu.style.display = 'block';
+    let list = JSON.parse(localStorage.getItem('usersList')) || [];
 
     list.push({
         name: currentName.value,
@@ -130,18 +138,6 @@ function finishGame() {
     })
 
     localStorage.setItem('usersList', JSON.stringify(list));
-
-
-    for (let i = 0; i < 10; i++) {
-        tr = `<tr>
-                <td>${list[i].level}</td>
-                <td>${list[i].appear}</td>
-                <td>${list[i].count}</td>
-              </tr>`;
-    }
-
-    table.insertAdjacentHTML('beforeend', tr);
-
 
     body.classList.add('popup_bg');
     popup.classList.add('popup_open');
@@ -153,8 +149,8 @@ function finishGame() {
     numCatchMoles = 0;
     score.textContent = 0;
     currentName.value = '';
+    label.classList.remove('error');
 }
-
 
 
 // close popup by clicking on close
@@ -179,6 +175,21 @@ document.addEventListener('click', function (event) {
 result.addEventListener('click', function () {
     popupResult.classList.add('popupResult_open');
     body.classList.add('popupResult_bg');
+
+    let list = JSON.parse(localStorage.getItem('usersList')) || [];
+    localStorage.setItem('usersList', JSON.stringify(list));
+
+    for (let i = 0; i < 11; i++) {
+        tr = `<tr>
+                <td><b>${[i + 1]}  - </b></td>
+                <td>${list[i].name}</td>
+                <td>${list[i].level}</td>
+                <td>${list[i].appear}</td>
+                <td>${list[i].count}</td>
+              </tr>`;
+
+        table.insertAdjacentHTML('beforeend', tr);
+    }
 });
 
 
@@ -186,4 +197,5 @@ result.addEventListener('click', function () {
 popupResultClose.addEventListener('click', function () {
     popupResult.classList.remove('popupResult_open');
     body.classList.remove('popupResult_bg');
+    table.innerHTML = '';
 })

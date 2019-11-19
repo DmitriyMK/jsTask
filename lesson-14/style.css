@@ -107,7 +107,7 @@ h1 {
 .level {
   display: block;
   width: 190px;
-  margin: 12px auto 24px;
+  margin: 24px auto 24px;
 
   font-family: "Amatic SC", cursive;
   font-size: 5em;
@@ -214,3 +214,31 @@ span {
   z-index: 9999;
   cursor: pointer;
 }
+
+button {
+  cursor: pointer;
+}
+
+.error {
+  position: relative;
+}
+
+.error input {
+  background: tomato;
+  border: 5px dotted red;
+}
+
+.error::after {
+  content: "Type your name, dude";
+  display: block;
+  margin-left: 160px;
+  color: red;
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+/* .disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background: gray;
+} */
