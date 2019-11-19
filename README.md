@@ -34,3 +34,15 @@
 
 ## Lesson 9 - Classes. OOP<br>
 * 9.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-9/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-9/app.js">JS</a> <br>
+
+## Lesson 11 - JSON<br>
+* 11.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-11/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-11/app.js">JS</a> <br>
+
+## Lesson 12 - NEWS API<br>
+* 12.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-12/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-12/app.js">JS</a> <br>
+
+## Lesson 13 - SpeechRecognition API<br>
+* 13.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-13/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-13/app.js">JS</a> <br>
+
+## Lesson 14 - Whack a mole - Game<br>
+* 14.1 - <a href="https://dmitriymk.github.io/jsTask/lesson-14/index.html">HTML</a>, <a href="https://github.com/DmitriyMK/jsTask/blob/master/lesson-14/app.js">JS</a> <br>
