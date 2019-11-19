@@ -129,7 +129,20 @@ function finishGame() {
         level: choiceLevel.value
     })
 
-    localStorage.setItem('usersList', JSON.stringify(list))
+    localStorage.setItem('usersList', JSON.stringify(list));
+
+
+    for (let i = 0; i < 10; i++) {
+        tr = `<tr>
+                <td>${list[i].level}</td>
+                <td>${list[i].appear}</td>
+                <td>${list[i].count}</td>
+              </tr>`;
+    }
+
+    table.insertAdjacentHTML('beforeend', tr);
+
+
     body.classList.add('popup_bg');
     popup.classList.add('popup_open');
     appearMoleInfo.textContent = numCountMoles;
@@ -142,22 +155,6 @@ function finishGame() {
     currentName.value = '';
 }
 
-
-function getResult() {
-
-    for (let i = 0; i < 10; i++) {
-        tr = `<tr>
-                <td>${list[i].level}</td>
-                <td>${list[i].appear}</td>
-                <td>${list[i].count}</td>
-              </tr>`;
-
-        table.insertAdjacentHTML('beforeend', tr);
-    }
-
-    // Выводить информацию по клику. 
-    // Избежать повторного перебора при повторном клике
-}
 
 
 // close popup by clicking on close
@@ -182,8 +179,6 @@ document.addEventListener('click', function (event) {
 result.addEventListener('click', function () {
     popupResult.classList.add('popupResult_open');
     body.classList.add('popupResult_bg');
-
-    getResult();
 });
 
 
