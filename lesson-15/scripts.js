@@ -15,7 +15,8 @@ const toggle = document.querySelector('.toggle');
 const progressBar = document.querySelector('.progress__filled');
 const time = document.querySelector('#time');
 const volume = document.querySelector('[name="volume"]');
-const playbackRate = document.querySelector('[name="playbackRate"]');
+const playbackRateButton = document.querySelector('[name="playbackRate"]');
+const changeTimeButton = document.querySelectorAll('.changeTime');
 
 
 function toggleVideo() {
@@ -33,11 +34,22 @@ function handleVolume() {
 }
 
 function speedOfVideo() {
-    video.playbackRate = + playbackRate.value;
-    console.log(video.playbackRate);
+    video.playbackRate = +playbackRateButton.value;
 }
+
+
+changeTimeButton.forEach((time) => {
+    time.addEventListener('click', function () {
+        video.currentTime = video.currentTime + parseInt(time.dataset.skip);
+    });
+});
+
+
+
+
+
 
 toggle.addEventListener('click', toggleVideo);
 video.addEventListener('timeupdate', handleProgress);
 volume.addEventListener('input', handleVolume);
-playbackRate.addEventListener('click', speedOfVideo);
+playbackRateButton.addEventListener('click', speedOfVideo);
