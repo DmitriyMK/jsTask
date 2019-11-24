@@ -15,50 +15,68 @@ const toggle = document.querySelector('.toggle');
 const progress = document.querySelector('.progress');
 const progressBar = document.querySelector('.progress__filled');
 const time = document.querySelector('#time');
+const timeAll = document.querySelector('#timeAll');
 const volume = document.querySelector('[name="volume"]');
 const playbackRateButton = document.querySelector('[name="playbackRate"]');
 const changeTimeButton = document.querySelectorAll('.changeTime');
 
 
+
 function toggleVideo() {
     video.paused ? video.play() : video.pause();
+    timeAll.value = convertToDataFormat(parseFloat(video.duration));
 
     if (video.play) {
         video.classList.toggle('pause');
     }
 }
 
+
 function handleProgress() {
     const percent = (video.currentTime / video.duration) * 100;
-    time.value = parseInt(video.currentTime);
+    time.value = convertToDataFormat(parseFloat(video.currentTime));
     progressBar.style.flexBasis = percent + '%';
 }
 
+
 function getProgress(time) {
-    const percent = time.offsetX * 100 / parseInt(progress.offsetWidth);
+    const percent = time.offsetX * 100 / parseFloat(progress.offsetWidth);
     video.currentTime = video.duration * percent / 100;
     progressBar.style.flexBasis = percent + '%';
-
 
     console.log(time.offsetX);
     console.log(progress.offsetWidth);
 }
 
+
+changeTimeButton.forEach((time) => {
+    time.addEventListener('click', function () {
+        video.currentTime += parseFloat(time.dataset.skip);
+    });
+});
+
+
 function handleVolume() {
     video.volume = volume.value;
 }
+
 
 function speedOfVideo() {
     video.playbackRate = +playbackRateButton.value;
 }
 
 
-changeTimeButton.forEach((time) => {
-    time.addEventListener('click', function () {
-        video.currentTime += parseInt(time.dataset.skip);
-    });
-});
+function convertToDataFormat(time) {
+    let seconds = Math.floor(time % 60);
+    let minutes = Math.floor((time / 60) % 60);
+    let hours = Math.floor((time / (60 * 60)) % 24);
 
+    return [
+        hours.toString().padStart(2, '0'),
+        minutes.toString().padStart(2, '0'),
+        seconds.toString().padStart(2, '0')
+    ].join(':');
+}
 
 
 toggle.addEventListener('click', toggleVideo);
