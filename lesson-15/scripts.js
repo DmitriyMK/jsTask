@@ -21,6 +21,10 @@ const changeTimeButton = document.querySelectorAll('.changeTime');
 
 function toggleVideo() {
     video.paused ? video.play() : video.pause();
+
+    if (video.play) {
+        video.classList.toggle('pause');
+    }
 }
 
 function handleProgress() {
