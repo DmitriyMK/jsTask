@@ -7,6 +7,11 @@ import 'materialize-css/dist/css/materialize.min.css';
 const datepicker = document.querySelectorAll('.datepicker');
 M.Datepicker.init(datepicker);
 
+export function getDatepickerInstance(elem) {
+    return M.Datepicker.getInstance(elem)
+}
+
+
 
 //Init autocomplete
 const autocomplete = document.querySelectorAll('.autocomplete');

@@ -1,5 +1,5 @@
 
-import {getAutocompleteInstance} from '../helpers/materialize';
+import { getAutocompleteInstance, getDatepickerInstance } from '../helpers/materialize';
 
 export default class FormUI {
     constructor() {
@@ -8,14 +8,31 @@ export default class FormUI {
 
         this.cityOfDeparture = document.querySelector('#city_of_departure');
         this.departureAutocomplete = getAutocompleteInstance(this.cityOfDeparture);
+
+        this.departureDate = document.querySelector('.departure');
+        this.departureDatepicker = getDatepickerInstance(this.departureDate);
+
+        this.returnDate = document.querySelector('.return');
+        this.returnDatepicker = getDatepickerInstance(this.returnDate);
     }
 
-    get arrive() {
+    get arriveCity() {
+        console.log(this.arriveAutocomplete);
         return this.cityOfArrive.value;
     }
 
-    get departure() {
+    get departureCity() {
         return this.cityOfDeparture.value;
+    }
+
+    get departure() {
+        const { year, month } = this.departureDatepicker.calendars[0];
+        return year + '-' + (month + 1);
+    }
+
+    get return() {
+        const { year, month } = this.returnDatepicker.calendars[0];
+        return year + '-' + (month + 1);
     }
 
     setAutocompleteData(data) {

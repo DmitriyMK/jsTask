@@ -30,4 +30,15 @@ export default class Locations {
             return acc;
         }, {})
     };
+
+    getCityCode(city) {
+        return this.citiesForAutocomplete[city];
+    }
+
+    fetchTickets(params) {
+        return this.api.getPrices(params)
+            .then((data) => {
+                return data.data.data;
+            })
+    }
 }

@@ -14,8 +14,19 @@ export default class Api {
                 console.log(error);
             })
     }
+
     getCountries() {
         return axios.get(this.url + '/countries')
+            .then(function (response) {
+                return response;
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    getPrices(params) {
+        return axios.get(this.url + '/prices/cheap', { params })
             .then(function (response) {
                 return response;
             })
