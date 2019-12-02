@@ -36,8 +36,11 @@ document.addEventListener('DOMContentLoaded', function () {
             'return_date': returnDate,
             currency: 'USD'
         }).then((data) => {
+            console.log('теперь тут -', data)
             tickets.renderTickets(data)
         })
     }
 
 });
+
+//currency=USD depart_date=2019-12

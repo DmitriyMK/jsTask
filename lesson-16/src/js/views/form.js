@@ -17,7 +17,7 @@ export default class FormUI {
     }
 
     get arriveCity() {
-        console.log(this.arriveAutocomplete);
+        console.log('this.arriveAutocomplete', this.arriveAutocomplete)
         return this.cityOfArrive.value;
     }
 
@@ -26,12 +26,12 @@ export default class FormUI {
     }
 
     get departure() {
-        const { year, month } = this.departureDatepicker.calendars[0];
+        const { year, month } = this.departureDatepicker.calendars[0]
         return year + '-' + (month + 1);
     }
 
     get return() {
-        const { year, month } = this.returnDatepicker.calendars[0];
+        const { year, month } = this.returnDatepicker.calendars[0]
         return year + '-' + (month + 1);
     }
 

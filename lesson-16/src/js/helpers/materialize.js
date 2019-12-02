@@ -11,8 +11,6 @@ export function getDatepickerInstance(elem) {
     return M.Datepicker.getInstance(elem)
 }
 
-
-
 //Init autocomplete
 const autocomplete = document.querySelectorAll('.autocomplete');
 const options = {
