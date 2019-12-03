@@ -3,10 +3,11 @@ import './helpers/materialize';
 import FormUI from './views/form';
 import Locations from './store/locations';
 import Tickets from './views/tickets';
+import Currency from './views/currency';
 
 const locations = new Locations();
 const tickets = new Tickets();
-
+const currency = new Currency();
 
 document.addEventListener('DOMContentLoaded', function () {
     const submitBtn = document.querySelector('.submit')
@@ -34,13 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
             destination: departureCity,
             'depart_date': departureDate,
             'return_date': returnDate,
-            currency: 'USD'
+            currency: currency.getCurrencyValue()
         }).then((data) => {
             console.log('теперь тут -', data)
             tickets.renderTickets(data)
         })
     }
-
 });
-
-//currency=USD depart_date=2019-12

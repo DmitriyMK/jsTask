@@ -32,4 +32,13 @@ export default class Api {
                 console.log(error);
             })
     }
+    getAirLines() {
+        return axios.get(this.url + '/airlines')
+            .then(function (response) {
+                return response;
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
 }

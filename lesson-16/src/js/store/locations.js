@@ -7,19 +7,22 @@ export default class Locations {
     constructor() {
         this.countries = null;
         this.cities = null;
+        this.airlines = null;
         this.api = new Api();
 
     }
     async init() {
         const response = await Promise.all([
             this.api.getCities(),
-            this.api.getCountries()
+            this.api.getCountries(),
+            this.api.getAirlines()
         ]);
 
-        const [cities, countries] = response;
+        const [cities, countries, airlines] = response;
         this.cities = cities.data;
         this.citiesForAutocomplete = this.formatCities(cities);
         this.countries = countries.data;
+        this.airlines = airlines.data;
     }
 
     formatCities(response) {
@@ -43,6 +46,18 @@ export default class Locations {
         }
     }
 
+    getAirlineLogo(code) {
+        return `http://pics.avs.io/200/200/${code}.png`
+    }
+
+    getAirlineName(code) {
+        const result = this.airlines.find((air) => {
+            return air.code === code
+        })
+
+        return result['name_translations'].en;
+    }
+
     transformTickets(ticketsList) {
         const updatedList = [];
 
@@ -50,11 +65,11 @@ export default class Locations {
             const ticket = ticketsList[key];
             updatedList.push({
                 ...ticket,
-                airline_logo: '',
-                airline_name: '',
+                airline_logo: this.getAirlineLogo(ticket.airline),
+                airline_name: this.getAirlineName(ticket.airline),
                 'origin_name': this.getCityName(ticket.origin),
                 'destination_name': this.getCityName(ticket.destination),
-                'departure_at': '',
+                'departure_at': new Date(ticket.departure_at).toUTCString(),
             });
         }
 

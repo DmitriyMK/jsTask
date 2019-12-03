@@ -5,7 +5,7 @@ export default class Tickets {
         this.container = document.querySelector('.tickets')
     }
 
-    renderTickets(tickets) {
+    renderTickets(tickets, currency) {
         this.clearScreen();
 
         if (tickets === {}) {

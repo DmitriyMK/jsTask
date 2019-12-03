@@ -3,6 +3,15 @@
 import 'materialize-css/dist/js/materialize.min';
 import 'materialize-css/dist/css/materialize.min.css';
 
+//Init select
+const select = document.querySelectorAll('#currency');
+M.FormSelect.init(select);
+
+export function getSelectInstance(elem) {
+    return M.FormSelect.getInstance(elem)
+}
+
+
 //Init datepicker
 const datepicker = document.querySelectorAll('.datepicker');
 M.Datepicker.init(datepicker);
