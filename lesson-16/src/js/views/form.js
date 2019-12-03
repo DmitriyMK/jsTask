@@ -17,7 +17,6 @@ export default class FormUI {
     }
 
     get arriveCity() {
-        console.log('this.arriveAutocomplete', this.arriveAutocomplete)
         return this.cityOfArrive.value;
     }
 
