@@ -11,12 +11,17 @@ function autoComplete(searchArray, wordToSearch) {
 
 
 function getValue(value) {
+
   let data = autoComplete(searchArray, value);
 
+  if (!value) {
+    result.innerHTML = '';
+    return
+  }
 
   data.forEach((item) => {
     const itemResult = item;
-    const itemSearch = `<ul><li><a href="#"> ${itemResult} </a></li></ul>`;
+    const itemSearch = `<a href="#">${itemResult}</a>`;
 
     result.insertAdjacentHTML('beforeend', itemSearch);
   });
@@ -32,6 +37,3 @@ input.addEventListener('keyup', function () {
   clearValue();
   getValue(this.value);
 });
-
-
-
