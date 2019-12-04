@@ -19,18 +19,48 @@
   }
 
   .search-input {
+    width: 100%;
     padding: 15px;
-    border: none;
+    border: 2px solid #666;
     font-size: 2em;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    width: 100%;
+    padding: 15px;
+    list-style-type: none;
+    background: #fff;
+    border-top: 2px solid transparent;
+    border-left: 2px solid #666;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    cursor: pointer;
+    transition: background-color .3s ease-out;
+    font-size: 2em;
+  }
+
+  li:hover {
+    background: #999;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 </style>
 
 <body>
 
-  <div class="container">
-    <input class="search-input" type="text" placeholder="Search smth"/>
 
-    <div class="search-result"></div>
+  <div class="container">
+    <input id="search-input" class="search-input" type="text" placeholder="Search smth" />
+
+    <div id="search-result"></div>
   </div>
 
 
