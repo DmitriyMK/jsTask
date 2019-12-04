@@ -107,3 +107,18 @@
   font-weight: bold;
   font-size: 18px;
 }
+
+.card .card-image .card-title {
+  position: relative !important;
+  color: #9e9e9e !important;
+}
+.card .card-image {
+  padding-top: 30px;
+}
+.select-wrapper input.select-dropdown {
+  display: inline !important;
+  color: #fff;
+}
+.select-wrapper .caret {
+  fill: #fff !important;
+}
