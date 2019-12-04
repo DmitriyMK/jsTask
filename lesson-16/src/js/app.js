@@ -1,4 +1,4 @@
-
+import '../css/style.css'; // Тут я добавила подключение css в проект
 import './helpers/materialize';
 import FormUI from './views/form';
 import Locations from './store/locations';
@@ -9,7 +9,8 @@ const locations = new Locations();
 const tickets = new Tickets();
 const currency = new Currency();
 
-document.addEventListener('DOMContentLoaded', function () {
+
+document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.querySelector('.submit')
     const form = new FormUI();
 
@@ -37,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'return_date': returnDate,
             currency: currency.getCurrencyValue()
         }).then((data) => {
-            console.log('теперь тут -', data)
-            tickets.renderTickets(data)
+            tickets.renderTickets(data, currency.getCurrencySymbol())
         })
     }
+
 });

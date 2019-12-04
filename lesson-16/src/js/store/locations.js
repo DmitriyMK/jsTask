@@ -1,6 +1,7 @@
 
 
 
+
 import Api from '../services/api';
 
 export default class Locations {
@@ -15,7 +16,7 @@ export default class Locations {
         const response = await Promise.all([
             this.api.getCities(),
             this.api.getCountries(),
-            this.api.getAirlines()
+            this.api.getAirlines(),
         ]);
 
         const [cities, countries, airlines] = response;
@@ -37,7 +38,6 @@ export default class Locations {
         return this.citiesForAutocomplete[city];
     }
 
-
     getCityName(cityCode) {
         for (let key in this.citiesForAutocomplete) {
             if (cityCode === this.citiesForAutocomplete[key]) {
@@ -54,13 +54,11 @@ export default class Locations {
         const result = this.airlines.find((air) => {
             return air.code === code
         })
-
         return result['name_translations'].en;
     }
 
     transformTickets(ticketsList) {
         const updatedList = [];
-
         for (let key in ticketsList) {
             const ticket = ticketsList[key];
             updatedList.push({
@@ -72,10 +70,8 @@ export default class Locations {
                 'departure_at': new Date(ticket.departure_at).toUTCString(),
             });
         }
-
         return updatedList;
     }
-
 
     fetchTickets(params) {
         return this.api.getPrices(params)
