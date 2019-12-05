@@ -10,8 +10,9 @@ const tickets = new Tickets();
 const currency = new Currency();
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const submitBtn = document.querySelector('.submit')
+    const resetBtn = document.querySelector('.reset')
     const form = new FormUI();
 
     async function initApp() {
@@ -23,6 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
     submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
         handleSubmit()
+    })
+
+    resetBtn.addEventListener('click', (e) => {
+        e.preventDefault();
     })
 
     function handleSubmit() {

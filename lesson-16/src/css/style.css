@@ -122,3 +122,8 @@
 .select-wrapper .caret {
   fill: #fff !important;
 }
+
+.card .flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
